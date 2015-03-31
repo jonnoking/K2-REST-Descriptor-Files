@@ -1,0 +1,920 @@
+{
+    "version": "1.0",
+    "baseUri": "https://graph.microsoft.com/beta/",
+    "entities": {
+        "File": {
+            "id": "File",
+            "title": "File",
+            "type": "object",
+            "properties": {
+                "@odata.context": {
+                    "id": "@odata.context",
+                    "type": "string"
+                },
+                "@odata.type": {
+                    "id": "@odata.type",
+                    "type": "string"
+                },
+                "@odata.id": {
+                    "id": "@odata.id",
+                    "type": "string"
+                },
+                "createdBy": {
+                    "id": "createdBy",
+                    "type": "object",
+                    "properties": {
+                        "application": {
+                            "id": "application",
+                            "type": "object"
+                        },
+                        "user": {
+                            "id": "user",
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "id": "id",
+                                    "type": "string"
+                                },
+                                "displayName": {
+                                    "id": "displayName",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "eTag": {
+                    "id": "eTag",
+                    "type": "string"
+                },
+                "id": {
+                    "id": "id",
+                    "type": "string"
+                },
+                "lastModifiedBy": {
+                    "id": "lastModifiedBy",
+                    "type": "object",
+                    "properties": {
+                        "application": {
+                            "id": "application",
+                            "type": "object"
+                        },
+                        "user": {
+                            "id": "user",
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "id": "id",
+                                    "type": "string"
+                                },
+                                "displayName": {
+                                    "id": "displayName",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "name": {
+                    "id": "name",
+                    "type": "string"
+                },
+                "parentReference": {
+                    "id": "parentReference",
+                    "type": "object",
+                    "properties": {
+                        "driveId": {
+                            "id": "driveId",
+                            "type": "string"
+                        },
+                        "id": {
+                            "id": "id",
+                            "type": "string"
+                        },
+                        "path": {
+                            "id": "path",
+                            "type": "string"
+                        }
+                    }
+                },
+                "size": {
+                    "id": "size",
+                    "type": "integer"
+                },
+                "dateTimeCreated": {
+                    "id": "dateTimeCreated",
+                    "type": "string"
+                },
+                "dateTimeLastModified": {
+                    "id": "dateTimeLastModified",
+                    "type": "string"
+                },
+                "type": {
+                    "id": "type",
+                    "type": "string"
+                },
+                "webUrl": {
+                    "id": "webUrl",
+                    "type": "string"
+                },
+                "contentUrl": {
+                    "id": "contentUrl",
+                    "type": "string"
+                },
+                "childCount": {
+                    "id": "childCount",
+                    "type": "integer"
+                }
+            }
+        },
+        "User": {
+            "id": "User",
+            "title": "User",
+            "type": "object",
+            "properties": {
+                "@odata.context": {
+                    "type": "string"
+                },
+                "objectType": {
+                    "type": "string"
+                },
+                "objectId": {
+                    "type": "string"
+                },
+                "deletionTimestamp": {
+                    "type": "string"
+                },
+                "accountEnabled": {
+                    "type": "boolean"
+                },
+                "assignedLicenses": {
+                    "type": "array",
+                    "items": {
+                        "id": "assignedLicenses",
+                        "title": "assignedLicenses",
+                        "type": "object",
+                        "properties": {
+                            "disabledPlans": {
+                                "id": "disabledPlans",
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            },
+                            "skuId": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "assignedPlans": {
+                    "type": "array",
+                    "items": {
+                        "id": "assignedPlan",
+                        "title": "assignedPlan",
+                        "type": "object",
+                        "properties": {
+                            "assignedTimestamp": {
+                                "id": "assignedTimestamp",
+                                "type": "string"
+                            },
+                            "capabilityStatus": {
+                                "id": "capabilityStatus",
+                                "type": "string"
+                            },
+                            "service": {
+                                "id": "service",
+                                "type": "string"
+                            },
+                            "servicePlanId": {
+                                "id": "servicePlanId",
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "city": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                },
+                "department": {
+                    "type": "string"
+                },
+                "dirSyncEnabled": {
+                    "type": "string"
+                },
+                "displayName": {
+                    "type": "string"
+                },
+                "facsimileTelephoneNumber": {
+                    "type": "string"
+                },
+                "givenName": {
+                    "type": "string"
+                },
+                "immutableId": {
+                    "type": "string"
+                },
+                "jobTitle": {
+                    "type": "string"
+                },
+                "lastDirSyncTime": {
+                    "type": "string"
+                },
+                "mail": {
+                    "type": "string"
+                },
+                "mailNickname": {
+                    "type": "string"
+                },
+                "mobile": {
+                    "type": "string"
+                },
+                "onPremisesSecurityIdentifier": {
+                    "type": "string"
+                },
+                "otherMails": {
+                    "type": "array",
+                    "items": {
+                        "id": "otherMail",
+                        "type": "string"
+                    }
+                },
+                "passwordPolicies": {
+                    "type": "string"
+                },
+                "passwordProfile": {
+                    "type": "string"
+                },
+                "physicalDeliveryOfficeName": {
+                    "type": "string"
+                },
+                "postalCode": {
+                    "type": "string"
+                },
+                "preferredLanguage": {
+                    "type": "string"
+                },
+                "provisionedPlans": {
+                    "type": "array",
+                    "items": {
+                        "id": "provisionedPlan",
+                        "title": "provisionedPlan",
+                        "type": "object",
+                        "properties": {
+                            "capabilityStatus": {
+                                "type": "string"
+                            },
+                            "provisioningStatus": {
+                                "type": "string"
+                            },
+                            "service": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "provisioningErrors": {
+                    "id": "provisioningErrors",
+                    "type": "array",
+                    "items": {
+                        "type": "object"
+                    }
+                },
+                "proxyAddresses": {
+                    "id": "proxyAddresses",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "sipProxyAddress": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "streetAddress": {
+                    "type": "string"
+                },
+                "surname": {
+                    "type": "string"
+                },
+                "telephoneNumber": {
+                    "type": "string"
+                },
+                "usageLocation": {
+                    "type": "string"
+                },
+                "userPrincipalName": {
+                    "type": "string"
+                },
+                "userType": {
+                    "type": "string"
+                }
+            }
+        },
+        "FileArray": {
+            "id": "FileArray",
+            "title": "FileArray",
+            "type": "object",
+            "properties": {
+                "@odata.context": {
+                    "id": "@odata.context",
+                    "type": "string"
+                },
+                "value": {
+                    "id": "filarrayarray",
+                    "type": "array",
+                    "items": { "$ref": "File" }
+                }
+            }
+        },
+        "UserArray": {
+            "id": "UserArray",
+            "title": "UserArray",
+            "type": "object",
+            "properties": {
+                "@odata.context": {
+                    "id": "@odata.context",
+                    "type": "string"
+                },
+                "value": {
+                    "id": "userarrayarray",
+                    "type": "array",
+                    "items": { "$ref": "User" }
+                }
+            }
+        },
+        "DirectoryRole": {
+            "id": "DirectoryRole",
+            "title": "DirectoryRole",
+            "type": "object",
+            "properties": {
+                "@odata.id": {
+                    "id": "@odata.id",
+                    "type": "string"
+                },
+                "objectType": {
+                    "id": "objectType",
+                    "type": "string"
+                },
+                "objectId": {
+                    "id": "objectId",
+                    "type": "string"
+                },
+                "deletionTimestamp": {
+                    "id": "deletionTimestamp",
+                    "type": "string"
+                },
+                "description": {
+                    "id": "description",
+                    "type": "string"
+                },
+                "displayName": {
+                    "id": "displayName",
+                    "type": "string"
+                },
+                "isSystem": {
+                    "id": "isSystem",
+                    "type": "boolean"
+                },
+                "roleDisabled": {
+                    "id": "roleDisabled",
+                    "type": "boolean"
+                },
+                "roleTemplateId": {
+                    "id": "roleTemplateId",
+                    "type": "string"
+                }
+            }
+        },
+        "Photo": {
+            "id": "Photo",
+            "title": "Photo",
+            "type": "object",
+            "properties": {
+                "@odata.context": {
+                    "id": "@odata.context",
+                    "type": "string"
+                },
+                "@odata.type": {
+                    "id": "@odata.type",
+                    "type": "string"
+                },
+                "@odata.id": {
+                    "id": "@odata.id",
+                    "type": "string"
+                },
+                "Id": {
+                    "id": "Id",
+                    "type": "string"
+                },
+                "Width": {
+                    "id": "Width",
+                    "type": "integer"
+                },
+                "Height": {
+                    "id": "Height",
+                    "type": "integer"
+                }
+            }
+        },
+        "Drive": {
+            "id": "Drive",
+            "title": "Drive",
+            "type": "object",
+            "properties": {
+                "@odata.context": {
+                    "id": "@odata.context",
+                    "type": "string"
+                },
+                "@odata.type": {
+                    "id": "@odata.type",
+                    "type": "string"
+                },
+                "@odata.id": {
+                    "id": "@odata.id",
+                    "type": "string"
+                },
+                "id": {
+                    "id": "id",
+                    "type": "string"
+                },
+                "owner": {
+                    "id": "Owner",
+                    "title": "Owner",
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "id": "id",
+                            "type": "string"
+                        },
+                        "displayName": {
+                            "id": "displayName",
+                            "type": "string"
+                        }
+                    }
+                },
+                "quota": {
+                    "id": "Quota",
+                    "title": "Quota",
+                    "type": "object",
+                    "properties": {
+                        "deleted": {
+                            "id": "deleted",
+                            "type": "integer"
+                        },
+                        "remaining": {
+                            "id": "remaining",
+                            "type": "integer"
+                        },
+                        "state": {
+                            "id": "state",
+                            "type": "string"
+                        },
+                        "total": {
+                            "id": "total",
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "EmailAddress": {
+            "id": "EmailAddress",
+            "title": "EmailAddress",
+            "type": "object",
+            "properties": {
+                "Address": {
+                    "id": "Address",
+                    "type": "string"
+                },
+                "Name": {
+                    "id": "Name",
+                    "type": "string"
+                }
+            }
+        },
+        "Message": {
+            "id": "Message",
+            "title": "Message",
+            "type": "object",
+            "properties": {
+                "@odata.type": {
+                    "id": "@odata.type",
+                    "type": "string"
+                },
+                "@odata.id": {
+                    "id": "@odata.id",
+                    "type": "string"
+                },
+                "Id": {
+                    "id": "Id",
+                    "type": "string"
+                },
+                "ChangeKey": {
+                    "id": "ChangeKey",
+                    "type": "string"
+                },
+                "Categories": {
+                    "id": "Categories",
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "DateTimeCreated": {
+                    "id": "DateTimeCreated",
+                    "type": "string"
+                },
+                "DateTimeLastModified": {
+                    "id": "DateTimeLastModified",
+                    "type": "string"
+                },
+                "Subject": {
+                    "id": "Subject",
+                    "type": "string"
+                },
+                "BodyPreview": {
+                    "id": "BodyPreview",
+                    "type": "string"
+                },
+                "Body": {
+                    "id": "Body",
+                    "title": "Body",
+                    "type": "object",
+                    "properties": {
+                        "ContentType": {
+                            "id": "ContentType",
+                            "type": "string"
+                        },
+                        "Content": {
+                            "id": "Content",
+                            "type": "string"
+                        }
+                    }
+                },
+                "Importance": {
+                    "id": "Importance",
+                    "type": "string"
+                },
+                "HasAttachments": {
+                    "id": "HasAttachments",
+                    "type": "boolean"
+                },
+                "ParentFolderId": {
+                    "id": "ParentFolderId",
+                    "type": "string"
+                },
+                "From": {
+                    "id": "From",
+                    "title": "From",
+                    "type": "object",
+                    "properties": {
+                        "EmailAddress": { "$ref": "EmailAddress" }
+                    }
+                },
+                "Sender": {
+                    "id": "Sender",
+                    "title": "Sender",
+                    "type": "object",
+                    "properties": {
+                        "EmailAddress": { "$ref": "EmailAddress" }
+                    }
+                },
+                "ToRecipients": {
+                    "id": "ToRecipients",
+                    "title": "ToRecipients",
+                    "type": "array",
+                    "items": {
+                         "$ref": "EmailAddress" 
+                    }
+                }
+            },
+            "CcRecipients": {
+                "id": "CcRecipients",
+                "title": "CcRecipients",
+                "type": "array",
+                "items": 
+                    { "$ref": "EmailAddress" }                
+            },
+            "BccRecipients": {
+                "id": "BccRecipients",
+                "title": "BccRecipients",
+                "type": "array",
+                "items": 
+                    { "$ref": "EmailAddress" }                
+            },
+            "ReplyTo": {
+                "id": "ReplyTo",
+                "title": "ReplyTo",
+                "type": "array",
+                "items": 
+                    { "$ref": "EmailAddress" }                
+            },
+            "ConversationId": {
+                "id": "ConversationId",
+                "type": "string"
+            },
+            "DateTimeReceived": {
+                "id": "DateTimeReceived",
+                "type": "string"
+            },
+            "DateTimeSent": {
+                "id": "DateTimeSent",
+                "type": "string"
+            },
+            "IsDeliveryReceiptRequested": {
+                "id": "IsDeliveryReceiptRequested",
+                "type": "boolean"
+            },
+            "IsReadReceiptRequested": {
+                "id": "IsReadReceiptRequested",
+                "type": "boolean"
+            },
+            "IsDraft": {
+                "id": "IsDraft",
+                "type": "boolean"
+            },
+            "IsRead": {
+                "id": "IsRead",
+                "type": "boolean"
+            },
+            "WebLink": {
+                "id": "WebLink",
+                "type": "string"
+            }
+        }
+    },
+    "endpoints": [
+        {
+            "path": "me",
+            "actions": [
+                {
+                    "entityName": "User",
+                    "method": "GET",
+                    "methodName": "GetMe",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "User"
+                    }
+                }
+            ],
+            "parameters": {
+                "post_id": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "path": "{tenantid}/users/",
+            "actions": [
+                {
+                    "entityName": "User",
+                    "method": "GET",
+                    "methodType": "List",
+                    "methodName": "GetUsers",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "UserArray",
+                        "property" :  "value"
+
+                    }
+                }
+            ],
+            "parameters": {
+                "tenantid": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "path": "{tenantid}/users/?$filter={filter}",
+            "actions": [
+                {
+                    "entityName": "User",
+                    "method": "GET",
+                    "methodType": "List",
+                    "methodName": "GetFilteredUsers",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "UserArray",
+                        "property" :  "value"
+
+                    }
+                }
+            ],
+            "parameters": {
+                "tenantid": {
+                    "type": "string"
+                },
+                "filter": { 
+                    "type" :  "string"
+                }
+            }
+        },
+        {
+            "path": "{tenantid}/users/{userid}",
+            "actions": [
+                {
+                    "entityName": "User",
+                    "method": "GET",
+                    "methodType": "Read",
+                    "methodName": "GetUser",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "User"
+                    }
+                }
+            ],
+            "parameters": {
+                "tenantid": {
+                    "type": "string"
+                },
+                "userid": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "path": "{tenantid}/users/{userid}/files",
+            "actions": [
+                {
+                    "entityName": "File",
+                    "method": "GET",
+                    "methodType": "List",
+                    "methodName": "GetUserFileItems",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "FileArray",
+                        "property": "value"
+                    }
+                }
+            ],
+            "parameters": {
+                "tenantid": {
+                    "type": "string"
+                },
+                "userid": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "path": "{tenantid}/users/{userid}/files/?$filter={filter}",
+            "actions": [
+                {
+                    "entityName": "File",
+                    "method": "GET",
+                    "methodType": "List",
+                    "methodName": "GetFilteredUserFiles_NWY",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "FileArray",
+                        "property": "value"
+                    }
+                }
+            ],
+            "parameters": {
+                "tenantid": {
+                    "type": "string"
+                },
+                "userid": {
+                    "type": "string"
+                },
+                "filter": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "path": "{tenantid}/users/{userid}/files/?$filter=type eq 'File'",
+            "actions": [
+                {
+                    "entityName": "File",
+                    "method": "GET",
+                    "methodType": "List",
+                    "methodName": "GetUserFiles_NWY",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "FileArray",
+                        "property": "value"
+                    }
+                }
+            ],
+            "parameters": {
+                "tenantid": {
+                    "type": "string"
+                },
+                "userid": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "path": "{tenantid}/users/{userid}/files/?$filter=type eq 'Folder'",
+            "actions": [
+                {
+                    "entityName": "File",
+                    "method": "GET",
+                    "methodType": "List",
+                    "methodName": "GetUserFolders_NWY",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "FileArray",
+                        "property": "value"
+                    }
+                }
+            ],
+            "parameters": {
+                "tenantid": {
+                    "type": "string"
+                },
+                "userid": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "path": "{tenantid}/users/{userid}/files/?$filter=parentReference/id eq '{folderid}'",
+            "actions": [
+                {
+                    "entityName": "File",
+                    "method": "GET",
+                    "methodType": "List",
+                    "methodName": "GetUserFilesFromFolder_NWY",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "FileArray",
+                        "property": "value"
+                    }
+                }
+            ],
+            "parameters": {
+                "tenantid": {
+                    "type": "string"
+                },
+                "userid": {
+                    "type": "string"
+                },
+                "folderid": { 
+                    "type" :  "string"
+                }
+            }
+        },
+        {
+            "path": "{tenantid}/users/{userid}/files/{fileid}",
+            "actions": [
+                {
+                    "entityName": "File",
+                    "method": "GET",
+                    "methodType": "Read",
+                    "methodName": "GetUserFile",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "File"
+                    }
+                }
+            ],
+            "parameters": {
+                "tenantid": {
+                    "type": "string"
+                },
+                "userid": {
+                    "type": "string"
+                },
+                "fileid": {
+                    "type": "string"
+                }
+            }
+        },        
+        {
+            "path": "{tenantid}/users/{userid}/Messages/{messageid}",
+            "actions": [
+                {
+                    "entityName": "Message",
+                    "method": "GET",
+                    "methodType": "Read",
+                    "methodName": "GetUserMessage",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "Message"
+                    }
+                }
+            ],
+            "parameters": {
+                "tenantid": {
+                    "type": "string"
+                },
+                "userid": {
+                    "type": "string"
+                },
+                "messageid": {
+                    "type": "string"
+                }
+            }
+        }
+
+    ]
+}

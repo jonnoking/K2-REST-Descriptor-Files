@@ -2,6 +2,54 @@
     "version": "1.0",
     "baseUri": "https://graph.microsoft.com/beta/",
     "entities": {
+        "Identity": {
+            "id": "Identity",
+            "title": "Identity",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "id": "id",
+                    "type": "string"
+                },
+                "displayName": {
+                    "id": "displayName",
+                    "type": "string"
+                }
+            }
+        },
+        "Application": {
+            "id": "Application",
+            "title": "Application",
+            "type": "object"
+        },
+        "IdentitySet": {
+            "id": "IdentitySet",
+            "title": "IdentitySet",
+            "type": "object",
+            "properties": {
+                "application": { "$ref": "Application" },
+                "user": { "$ref": "Identity" }
+            }
+        },
+        "ItemReference": {
+            "id": "ItemReference",
+            "title": "ItemReference",
+            "type": "object",
+            "properties": {
+                "driveId": {
+                    "id": "driveId",
+                    "type": "string"
+                },
+                "id": {
+                    "id": "id",
+                    "type": "string"
+                },
+                "path": {
+                    "id": "path",
+                    "type": "string"
+                }
+            }
+        },
         "File": {
             "id": "File",
             "title": "File",
@@ -19,30 +67,7 @@
                     "id": "@odata.id",
                     "type": "string"
                 },
-                "createdBy": {
-                    "id": "createdBy",
-                    "type": "object",
-                    "properties": {
-                        "application": {
-                            "id": "application",
-                            "type": "object"
-                        },
-                        "user": {
-                            "id": "user",
-                            "type": "object",
-                            "properties": {
-                                "id": {
-                                    "id": "id",
-                                    "type": "string"
-                                },
-                                "displayName": {
-                                    "id": "displayName",
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                },
+                "createdBy": { "$ref": "IdentitySet" },
                 "eTag": {
                     "id": "eTag",
                     "type": "string"
@@ -51,52 +76,12 @@
                     "id": "id",
                     "type": "string"
                 },
-                "lastModifiedBy": {
-                    "id": "lastModifiedBy",
-                    "type": "object",
-                    "properties": {
-                        "application": {
-                            "id": "application",
-                            "type": "object"
-                        },
-                        "user": {
-                            "id": "user",
-                            "type": "object",
-                            "properties": {
-                                "id": {
-                                    "id": "id",
-                                    "type": "string"
-                                },
-                                "displayName": {
-                                    "id": "displayName",
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                },
+                "lastModifiedBy": { "$ref": "IdentitySet" },
                 "name": {
                     "id": "name",
                     "type": "string"
                 },
-                "parentReference": {
-                    "id": "parentReference",
-                    "type": "object",
-                    "properties": {
-                        "driveId": {
-                            "id": "driveId",
-                            "type": "string"
-                        },
-                        "id": {
-                            "id": "id",
-                            "type": "string"
-                        },
-                        "path": {
-                            "id": "path",
-                            "type": "string"
-                        }
-                    }
-                },
+                "parentReference": { "$ref": "ItemReference" },
                 "size": {
                     "id": "size",
                     "type": "integer"
@@ -127,6 +112,81 @@
                 }
             }
         },
+        "AssignedLicenses": {
+            "id": "AssignedLicenses",
+            "title": "AssignedLicenses",
+            "type": "object",
+            "properties": {
+                "disabledPlans": {
+                    "id": "disabledPlans",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "skuId": {
+                    "type": "string"
+                }
+            }
+        },
+        "AssignedPlan": {
+            "id": "AssignedPlan",
+            "title": "AssignedPlan",
+            "type": "object",
+            "properties": {
+                "assignedTimestamp": {
+                    "id": "assignedTimestamp",
+                    "type": "string"
+                },
+                "capabilityStatus": {
+                    "id": "capabilityStatus",
+                    "type": "string"
+                },
+                "service": {
+                    "id": "service",
+                    "type": "string"
+                },
+                "servicePlanId": {
+                    "id": "servicePlanId",
+                    "type": "string"
+                }
+            }
+        },
+        "ProvisionedPlan": {
+            "id": "ProvisionedPlan",
+            "title": "ProvisionedPlan",
+            "type": "object",
+            "properties": {
+                "capabilityStatus": {
+                    "type": "string"
+                },
+                "provisioningStatus": {
+                    "type": "string"
+                },
+                "service": {
+                    "type": "string"
+                }
+            }
+        },
+        "ProvisioningError": {
+            "id": "ProvisioningError",
+            "title": "ProvisioningError",
+            "type": "object",
+            "properties": {
+                "errorDetail": {
+                    "type": "string"
+                },
+                "resolved": {
+                    "type": "boolean"
+                },
+                "service": {
+                    "type": "string"
+                },
+                "timestamp": {
+                    "type": "string"
+                }
+            }
+        },
         "User": {
             "id": "User",
             "title": "User",
@@ -150,47 +210,13 @@
                 "assignedLicenses": {
                     "type": "array",
                     "items": {
-                        "id": "assignedLicenses",
-                        "title": "assignedLicenses",
-                        "type": "object",
-                        "properties": {
-                            "disabledPlans": {
-                                "id": "disabledPlans",
-                                "type": "array",
-                                "items": {
-                                    "type": "object"
-                                }
-                            },
-                            "skuId": {
-                                "type": "string"
-                            }
-                        }
+                        "$ref": "AssignedLicenses"
                     }
                 },
                 "assignedPlans": {
                     "type": "array",
                     "items": {
-                        "id": "assignedPlan",
-                        "title": "assignedPlan",
-                        "type": "object",
-                        "properties": {
-                            "assignedTimestamp": {
-                                "id": "assignedTimestamp",
-                                "type": "string"
-                            },
-                            "capabilityStatus": {
-                                "id": "capabilityStatus",
-                                "type": "string"
-                            },
-                            "service": {
-                                "id": "service",
-                                "type": "string"
-                            },
-                            "servicePlanId": {
-                                "id": "servicePlanId",
-                                "type": "string"
-                            }
-                        }
+                        "$ref": "AssignedPlan"
                     }
                 },
                 "city": {
@@ -260,27 +286,14 @@
                 "provisionedPlans": {
                     "type": "array",
                     "items": {
-                        "id": "provisionedPlan",
-                        "title": "provisionedPlan",
-                        "type": "object",
-                        "properties": {
-                            "capabilityStatus": {
-                                "type": "string"
-                            },
-                            "provisioningStatus": {
-                                "type": "string"
-                            },
-                            "service": {
-                                "type": "string"
-                            }
-                        }
+                        "$ref": "ProvisionedPlan"
                     }
                 },
                 "provisioningErrors": {
                     "id": "provisioningErrors",
                     "type": "array",
                     "items": {
-                        "type": "object"
+                        "$ref": "ProvisioningError"
                     }
                 },
                 "proxyAddresses": {
@@ -305,6 +318,9 @@
                 "telephoneNumber": {
                     "type": "string"
                 },
+                "thumbnailPhoto": {
+                    "type": "string"
+                },
                 "usageLocation": {
                     "type": "string"
                 },
@@ -313,38 +329,66 @@
                 },
                 "userType": {
                     "type": "string"
-                }
-            }
-        },
-        "FileArray": {
-            "id": "FileArray",
-            "title": "FileArray",
-            "type": "object",
-            "properties": {
-                "@odata.context": {
-                    "id": "@odata.context",
+                },
+                "MailBoxGuid": {
                     "type": "string"
                 },
-                "value": {
-                    "id": "filarrayarray",
-                    "type": "array",
-                    "items": { "$ref": "File" }
-                }
-            }
-        },
-        "UserArray": {
-            "id": "UserArray",
-            "title": "UserArray",
-            "type": "object",
-            "properties": {
-                "@odata.context": {
-                    "id": "@odata.context",
+                "AboutMe": {
                     "type": "string"
                 },
-                "value": {
-                    "id": "userarrayarray",
+                "Alias": {
+                    "type": "string"
+                },
+                "Birthday": {
+                    "type": "string"
+                },
+                "HireDate": {
+                    "type": "string"
+                },
+                "Interests": {
                     "type": "array",
-                    "items": { "$ref": "User" }
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "MySite": {
+                    "type": "string"
+                },
+                "PastProjects": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "PreferredName": {
+                    "type": "string"
+                },
+                "PrincipalName": {
+                    "type": "string"
+                },
+                "Responsibilities": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "Schools": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "Skills": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "Tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 }
             }
         },
@@ -422,6 +466,29 @@
                 }
             }
         },
+        "Quota": {
+            "id": "Quota",
+            "title": "Quota",
+            "type": "object",
+            "properties": {
+                "deleted": {
+                    "id": "deleted",
+                    "type": "integer"
+                },
+                "remaining": {
+                    "id": "remaining",
+                    "type": "integer"
+                },
+                "state": {
+                    "id": "state",
+                    "type": "string"
+                },
+                "total": {
+                    "id": "total",
+                    "type": "integer"
+                }
+            }
+        },
         "Drive": {
             "id": "Drive",
             "title": "Drive",
@@ -444,42 +511,10 @@
                     "type": "string"
                 },
                 "owner": {
-                    "id": "Owner",
-                    "title": "Owner",
-                    "type": "object",
-                    "properties": {
-                        "id": {
-                            "id": "id",
-                            "type": "string"
-                        },
-                        "displayName": {
-                            "id": "displayName",
-                            "type": "string"
-                        }
-                    }
+                    "$ref": "Identity"
                 },
                 "quota": {
-                    "id": "Quota",
-                    "title": "Quota",
-                    "type": "object",
-                    "properties": {
-                        "deleted": {
-                            "id": "deleted",
-                            "type": "integer"
-                        },
-                        "remaining": {
-                            "id": "remaining",
-                            "type": "integer"
-                        },
-                        "state": {
-                            "id": "state",
-                            "type": "string"
-                        },
-                        "total": {
-                            "id": "total",
-                            "type": "integer"
-                        }
-                    }
+                    "$ref": "Quota"
                 }
             }
         },
@@ -495,6 +530,60 @@
                 "Name": {
                     "id": "Name",
                     "type": "string"
+                }
+            }
+        },
+        "ItemBody": {
+            "id": "ItemBody",
+            "title": "ItemBody",
+            "type": "object",
+            "properties": {
+                "ContentType": {
+                    "id": "ContentType",
+                    "type": "string"
+                },
+                "Content": {
+                    "id": "Content",
+                    "type": "string"
+                }
+            }
+        },
+        "Location": {
+            "id": "Location",
+            "title": "Location",
+            "type": "object",
+            "properties": {
+                "DisplayName": {
+                    "id": "DisplayName",
+                    "type": "string"
+                }
+            }
+        },
+        "Attendee": {
+            "id": "Attendee",
+            "title": "Attendee",
+            "type": "object",
+            "properties": {
+                "EmailAddress": {
+                    "$ref": "EmailAddress"
+                },
+                "Status": {
+                    "id": "Status",
+                    "type": "string"
+                },
+                "Type": {
+                    "id": "Type",
+                    "type": "string"
+                }
+            }
+        },
+        "Recipient": {
+            "id": "Recipient",
+            "title": "Recipient",
+            "type": "object",
+            "properties": {
+                "EmailAddress": {
+                    "$ref": "EmailAddress"
                 }
             }
         },
@@ -541,19 +630,7 @@
                     "type": "string"
                 },
                 "Body": {
-                    "id": "Body",
-                    "title": "Body",
-                    "type": "object",
-                    "properties": {
-                        "ContentType": {
-                            "id": "ContentType",
-                            "type": "string"
-                        },
-                        "Content": {
-                            "id": "Content",
-                            "type": "string"
-                        }
-                    }
+                    "$ref": "ItemBody"
                 },
                 "Importance": {
                     "id": "Importance",
@@ -568,82 +645,263 @@
                     "type": "string"
                 },
                 "From": {
-                    "id": "From",
-                    "title": "From",
-                    "type": "object",
-                    "properties": {
-                        "EmailAddress": { "$ref": "EmailAddress" }
-                    }
+                    "$ref": "Recipient"
                 },
                 "Sender": {
-                    "id": "Sender",
-                    "title": "Sender",
-                    "type": "object",
-                    "properties": {
-                        "EmailAddress": { "$ref": "EmailAddress" }
-                    }
+                    "$ref": "Recipient"
                 },
                 "ToRecipients": {
                     "id": "ToRecipients",
-                    "title": "ToRecipients",
                     "type": "array",
                     "items": {
-                         "$ref": "EmailAddress" 
+                        "$ref": "Recipient"
                     }
+                },
+                "CcRecipients": {
+                    "id": "CcRecipients",
+                    "type": "array",
+                    "items": { "$ref": "Recipient" }
+                },
+                "BccRecipients": {
+                    "id": "BccRecipients",
+                    "type": "array",
+                    "items": { "$ref": "Recipient" }
+                },
+                "ReplyTo": {
+                    "id": "ReplyTo",
+                    "type": "array",
+                    "items": { "$ref": "Recipient" }
+                },
+                "ConversationId": {
+                    "id": "ConversationId",
+                    "type": "string"
+                },
+                "DateTimeReceived": {
+                    "id": "DateTimeReceived",
+                    "type": "string"
+                },
+                "DateTimeSent": {
+                    "id": "DateTimeSent",
+                    "type": "string"
+                },
+                "IsDeliveryReceiptRequested": {
+                    "id": "IsDeliveryReceiptRequested",
+                    "type": "boolean"
+                },
+                "IsReadReceiptRequested": {
+                    "id": "IsReadReceiptRequested",
+                    "type": "boolean"
+                },
+                "IsDraft": {
+                    "id": "IsDraft",
+                    "type": "boolean"
+                },
+                "IsRead": {
+                    "id": "IsRead",
+                    "type": "boolean"
+                },
+                "WebLink": {
+                    "id": "WebLink",
+                    "type": "string"
                 }
-            },
-            "CcRecipients": {
-                "id": "CcRecipients",
-                "title": "CcRecipients",
-                "type": "array",
-                "items": 
-                    { "$ref": "EmailAddress" }                
-            },
-            "BccRecipients": {
-                "id": "BccRecipients",
-                "title": "BccRecipients",
-                "type": "array",
-                "items": 
-                    { "$ref": "EmailAddress" }                
-            },
-            "ReplyTo": {
-                "id": "ReplyTo",
-                "title": "ReplyTo",
-                "type": "array",
-                "items": 
-                    { "$ref": "EmailAddress" }                
-            },
-            "ConversationId": {
-                "id": "ConversationId",
-                "type": "string"
-            },
-            "DateTimeReceived": {
-                "id": "DateTimeReceived",
-                "type": "string"
-            },
-            "DateTimeSent": {
-                "id": "DateTimeSent",
-                "type": "string"
-            },
-            "IsDeliveryReceiptRequested": {
-                "id": "IsDeliveryReceiptRequested",
-                "type": "boolean"
-            },
-            "IsReadReceiptRequested": {
-                "id": "IsReadReceiptRequested",
-                "type": "boolean"
-            },
-            "IsDraft": {
-                "id": "IsDraft",
-                "type": "boolean"
-            },
-            "IsRead": {
-                "id": "IsRead",
-                "type": "boolean"
-            },
-            "WebLink": {
-                "id": "WebLink",
-                "type": "string"
+            }
+        },
+        "Event": {
+            "id": "Event",
+            "title": "Event",
+            "type": "object",
+            "properties": {
+                "@odata.type": {
+                    "id": "@odata.type",
+                    "type": "string"
+                },
+                "@odata.id": {
+                    "id": "@odata.id",
+                    "type": "string"
+                },
+                "Id": {
+                    "id": "Id",
+                    "type": "string"
+                },
+                "ChangeKey": {
+                    "id": "ChangeKey",
+                    "type": "string"
+                },
+                "Categories": {
+                    "id": "Categories",
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "DateTimeCreated": {
+                    "id": "DateTimeCreated",
+                    "type": "string"
+                },
+                "DateTimeLastModified": {
+                    "id": "DateTimeLastModified",
+                    "type": "string"
+                },
+                "Subject": {
+                    "id": "Subject",
+                    "type": "string"
+                },
+                "BodyPreview": {
+                    "id": "BodyPreview",
+                    "type": "string"
+                },
+                "Body": {
+                    "$ref": "ItemBody"
+                },
+                "Importance": {
+                    "id": "Importance",
+                    "type": "string"
+                },
+                "HasAttachments": {
+                    "id": "HasAttachments",
+                    "type": "boolean"
+                },
+                "Start": {
+                    "id": "Start",
+                    "type": "string"
+                },
+                "End": {
+                    "id": "End",
+                    "type": "string"
+                },
+                "Location": {
+                    "$ref": "Location"
+                },
+                "ShowAs": {
+                    "id": "ShowAs",
+                    "type": "string"
+                },
+                "IsAllDay": {
+                    "id": "IsAllDay",
+                    "type": "boolean"
+                },
+                "IsCancelled": {
+                    "id": "IsCancelled",
+                    "type": "boolean"
+                },
+                "IsOrganizer": {
+                    "id": "IsOrganizer",
+                    "type": "boolean"
+                },
+                "ResponseRequested": {
+                    "id": "ResponseRequested",
+                    "type": "boolean"
+                },
+                "Type": {
+                    "id": "Type",
+                    "type": "string"
+                },
+                "SeriesMasterId": {
+                    "id": "SeriesMasterId",
+                    "type": "string"
+                },
+                "Attendees": {
+                    "id": "Attendees",
+                    "type": "array",
+                    "items": { "$ref": "Attendee" }
+                },
+                "Recurrance": {
+                    "id": "Recurrance",
+                    "type": "string"
+                },
+                "Organizer": {
+                    "$ref": "Recipient"
+                },
+                "StartTimeZone": {
+                    "id": "StartTimeZone",
+                    "type": "string"
+                },
+                "EndTimeZone": {
+                    "id": "EndTimeZone",
+                    "type": "string"
+                },
+                "WebLink": {
+                    "id": "WebLink",
+                    "type": "string"
+                }
+            }
+        },
+        "FileArray": {
+            "id": "FileArray",
+            "title": "FileArray",
+            "type": "object",
+            "properties": {
+                "@odata.context": {
+                    "id": "@odata.context",
+                    "type": "string"
+                },
+                "value": {
+                    "id": "filarrayarray",
+                    "type": "array",
+                    "items": { "$ref": "File" }
+                }
+            }
+        },
+        "UserArray": {
+            "id": "UserArray",
+            "title": "UserArray",
+            "type": "object",
+            "properties": {
+                "@odata.context": {
+                    "id": "@odata.context",
+                    "type": "string"
+                },
+                "value": {
+                    "id": "userarrayarray",
+                    "type": "array",
+                    "items": { "$ref": "User" }
+                }
+            }
+        },
+        "MessageArray": {
+            "id": "MessageArray",
+            "title": "MessageArray",
+            "type": "object",
+            "properties": {
+                "@odata.context": {
+                    "id": "@odata.context",
+                    "type": "string"
+                },
+                "value": {
+                    "id": "messagearrayarray",
+                    "type": "array",
+                    "items": { "$ref": "Message" }
+                }
+            }
+        },
+        "PhotoArray": {
+            "id": "PhotoArray",
+            "title": "PhotoArray",
+            "type": "object",
+            "properties": {
+                "@odata.context": {
+                    "id": "@odata.context",
+                    "type": "string"
+                },
+                "value": {
+                    "id": "photoarrayarray",
+                    "type": "array",
+                    "items": { "$ref": "Photo" }
+                }
+            }
+        },
+        "EventArray": {
+            "id": "EventArray",
+            "title": "EventArray",
+            "type": "object",
+            "properties": {
+                "@odata.context": {
+                    "id": "@odata.context",
+                    "type": "string"
+                },
+                "value": {
+                    "id": "eventarrayarray",
+                    "type": "array",
+                    "items": { "$ref": "Event" }
+                }
             }
         }
     },
@@ -678,7 +936,7 @@
                     "response": {
                         "mediaType": "application/json",
                         "dataType": "UserArray",
-                        "property" :  "value"
+                        "property": "value"
 
                     }
                 }
@@ -700,7 +958,7 @@
                     "response": {
                         "mediaType": "application/json",
                         "dataType": "UserArray",
-                        "property" :  "value"
+                        "property": "value"
 
                     }
                 }
@@ -709,8 +967,8 @@
                 "tenantid": {
                     "type": "string"
                 },
-                "filter": { 
-                    "type" :  "string"
+                "filter": {
+                    "type": "string"
                 }
             }
         },
@@ -858,8 +1116,8 @@
                 "userid": {
                     "type": "string"
                 },
-                "folderid": { 
-                    "type" :  "string"
+                "folderid": {
+                    "type": "string"
                 }
             }
         },
@@ -888,7 +1146,58 @@
                     "type": "string"
                 }
             }
-        },        
+        },
+        {
+            "path": "{tenantid}/users/{userid}/Messages",
+            "actions": [
+                {
+                    "entityName": "Message",
+                    "method": "GET",
+                    "methodType": "List",
+                    "methodName": "GetUserMessages",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "MessageArray",
+                        "property": "value"
+                    }
+                }
+            ],
+            "parameters": {
+                "tenantid": {
+                    "type": "string"
+                },
+                "userid": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "path": "{tenantid}/users/{userid}/Messages/?$filter={filter}",
+            "actions": [
+                {
+                    "entityName": "Message",
+                    "method": "GET",
+                    "methodType": "List",
+                    "methodName": "GetFilteredUserMessages",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "MessageArray",
+                        "property": "value"
+                    }
+                }
+            ],
+            "parameters": {
+                "tenantid": {
+                    "type": "string"
+                },
+                "userid": {
+                    "type": "string"
+                },
+                "filter": {
+                    "type": "string"
+                }
+            }
+        },
         {
             "path": "{tenantid}/users/{userid}/Messages/{messageid}",
             "actions": [
@@ -914,7 +1223,159 @@
                     "type": "string"
                 }
             }
-        }
+        },
+        {
+            "path": "{tenantid}/users/{userid}/UserPhotos",
+            "actions": [
+                {
+                    "entityName": "Photo",
+                    "method": "GET",
+                    "methodType": "List",
+                    "methodName": "GetUserPhotos",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "PhotoArray",
+                        "property": "value"
 
+                    }
+                }
+            ],
+            "parameters": {
+                "tenantid": {
+                    "type": "string"
+                },
+                "userid": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "path": "{tenantid}/users/{userid}/UserPhoto",
+            "actions": [
+                {
+                    "entityName": "Photo",
+                    "method": "GET",
+                    "methodType": "Read",
+                    "methodName": "GetUserPhoto",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "Photo"
+                    }
+                }
+            ],
+            "parameters": {
+                "tenantid": {
+                    "type": "string"
+                },
+                "userid": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "path": "{tenantid}/users/{userid}/UserPhoto/{photoid}",
+            "actions": [
+                {
+                    "entityName": "Photo",
+                    "method": "GET",
+                    "methodType": "Read",
+                    "methodName": "LoadUserPhoto",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "Photo"
+                    }
+                }
+            ],
+            "parameters": {
+                "tenantid": {
+                    "type": "string"
+                },
+                "userid": {
+                    "type": "string"
+                },
+                "photoid": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "path": "{tenantid}/users/{userid}/Events",
+            "actions": [
+                {
+                    "entityName": "Event",
+                    "method": "GET",
+                    "methodType": "List",
+                    "methodName": "GetUserEvents",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "EventArray",
+                        "property": "value"
+
+                    }
+                }
+            ],
+            "parameters": {
+                "tenantid": {
+                    "type": "string"
+                },
+                "userid": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "path": "{tenantid}/users/{userid}/Events/?$filter={filter}",
+            "actions": [
+                {
+                    "entityName": "Event",
+                    "method": "GET",
+                    "methodType": "List",
+                    "methodName": "GetFilteredUserEvents",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "EventArray",
+                        "property": "value"
+
+                    }
+                }
+            ],
+            "parameters": {
+                "tenantid": {
+                    "type": "string"
+                },
+                "userid": {
+                    "type": "string"
+                },
+                "filter": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "path": "{tenantid}/users/{userid}/Events/{eventid}",
+            "actions": [
+                {
+                    "entityName": "Event",
+                    "method": "GET",
+                    "methodType": "Read",
+                    "methodName": "GetUserEvent",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "Event"
+                    }
+                }
+            ],
+            "parameters": {
+                "tenantid": {
+                    "type": "string"
+                },
+                "userid": {
+                    "type": "string"
+                },
+                "eventid": {
+                    "type": "string"
+                }
+            }
+        }
     ]
-}
+    }

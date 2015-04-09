@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:dr="http://schemas.microsoft.com/dallas/2010/04">
+  <edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="1.0">
+    <Schema xmlns="http://schemas.microsoft.com/ado/2009/08/edm" Namespace="Microsoft" Alias="Microsoft">
+      <EntityContainer Name="TranslatorContainer">
+        <EntitySet Name="TranslationEntitySet" EntityType="Microsoft.Translation"/>
+        <EntitySet Name="LanguageEntitySet" EntityType="Microsoft.Language"/>
+        <EntitySet Name="DetectedLanguageEntitySet" EntityType="Microsoft.DetectedLanguage"/>
+        <FunctionImport Name="Translate" EntitySet="TranslationEntitySet" ReturnType="Microsoft.Translation" dr:QueryResourceCost="1" m:HttpMethod="GET">
+          <Parameter Name="Text" Nullable="false" Mode="In" Type="Edm.String" dr:Description="the text to translate" dr:SampleValues="hello"/>
+          <Parameter Name="To" Nullable="false" Mode="In" Type="Edm.String" dr:Enum="ar|bg|ca|cs|da|de|el|en|es|et|fa|fi|fr|he|hi|ht|hu|id|it|ja|ko|lt|lv|ms|mww|nl|no|pl|pt|ro|ru|sk|sl|sv|th|tr|uk|ur|vi|zh-CHS|zh-CHT" dr:Description="the language code to translate the text into" dr:SampleValues="nl"/>
+          <Parameter Name="From" Nullable="true" Mode="In" Type="Edm.String" dr:Enum="ar|bg|ca|cs|da|de|el|en|es|et|fa|fi|fr|he|hi|ht|hu|id|it|ja|ko|lt|lv|ms|mww|nl|no|pl|pt|ro|ru|sk|sl|sv|th|tr|uk|ur|vi|zh-CHS|zh-CHT" dr:Description="the language code of the translation text" dr:SampleValues="en"/>
+        </FunctionImport>
+        <FunctionImport Name="GetLanguagesForTranslation" EntitySet="LanguageEntitySet" ReturnType="Collection(Microsoft.Language)" dr:QueryResourceCost="1" m:HttpMethod="GET"/>
+        <FunctionImport Name="Detect" EntitySet="DetectedLanguageEntitySet" ReturnType="Microsoft.DetectedLanguage" dr:QueryResourceCost="1" m:HttpMethod="GET">
+          <Parameter Name="Text" Nullable="false" Mode="In" Type="Edm.String" dr:Description="the text whose language is to be identified" dr:SampleValues="hello"/>
+        </FunctionImport>
+      </EntityContainer>
+      <EntityType Name="Translation">
+		<Key>
+			<PropertyRef Name="Text"/>
+		</Key>
+        <Property Name="Text" Type="Edm.String" Nullable="false" dr:Queryable="false" dr:Returned="true"/>
+      </EntityType>
+      <EntityType Name="Language">
+		<Key>
+			<PropertyRef Name="Code"/>
+		</Key>
+        <Property Name="Code" Type="Edm.String" Nullable="false" dr:Queryable="false" dr:Returned="true"/>
+      </EntityType>
+      <EntityType Name="DetectedLanguage">
+	  	<Key>
+			<PropertyRef Name="Code"/>
+		</Key>
+        <Property Name="Code" Type="Edm.String" Nullable="false" dr:Queryable="false" dr:Returned="true"/>
+      </EntityType>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

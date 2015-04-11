@@ -207,18 +207,6 @@
                 "accountEnabled": {
                     "type": "boolean"
                 },
-                "assignedLicenses": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "AssignedLicenses"
-                    }
-                },
-                "assignedPlans": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "AssignedPlan"
-                    }
-                },
                 "city": {
                     "type": "string"
                 },
@@ -261,13 +249,6 @@
                 "onPremisesSecurityIdentifier": {
                     "type": "string"
                 },
-                "otherMails": {
-                    "type": "array",
-                    "items": {
-                        "id": "otherMail",
-                        "type": "string"
-                    }
-                },
                 "passwordPolicies": {
                     "type": "string"
                 },
@@ -282,26 +263,6 @@
                 },
                 "preferredLanguage": {
                     "type": "string"
-                },
-                "provisionedPlans": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "ProvisionedPlan"
-                    }
-                },
-                "provisioningErrors": {
-                    "id": "provisioningErrors",
-                    "type": "array",
-                    "items": {
-                        "$ref": "ProvisioningError"
-                    }
-                },
-                "proxyAddresses": {
-                    "id": "proxyAddresses",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
                 },
                 "sipProxyAddress": {
                     "type": "string"
@@ -345,26 +306,26 @@
                 "HireDate": {
                     "type": "string"
                 },
-                "Interests": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
                 "MySite": {
                     "type": "string"
-                },
-                "PastProjects": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
                 },
                 "PreferredName": {
                     "type": "string"
                 },
                 "PrincipalName": {
                     "type": "string"
+                },
+                "Interests": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "PastProjects": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "Responsibilities": {
                     "type": "array",
@@ -389,7 +350,47 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "assignedLicenses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "AssignedLicenses"
+                    }
+                },
+                "assignedPlans": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "AssignedPlan"
+                    }
+                },
+                "otherMails": {
+                    "type": "array",
+                    "items": {
+                        "id": "otherMail",
+                        "type": "string"
+                    }
+                },
+                "provisionedPlans": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "ProvisionedPlan"
+                    }
+                },
+                "provisioningErrors": {
+                    "id": "provisioningErrors",
+                    "type": "array",
+                    "items": {
+                        "$ref": "ProvisioningError"
+                    }
+                },
+                "proxyAddresses": {
+                    "id": "proxyAddresses",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 }
+
             }
         },
         "DirectoryRole": {

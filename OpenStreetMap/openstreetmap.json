@@ -1,0 +1,208 @@
+{
+    "version": "1.0",
+    "baseUri": "http://nominatim.openstreetmap.org/",
+    "entities": {
+        "Address": {
+            "id": "Address",
+            "title": "Address",
+            "type": "object",
+            "properties": {
+                "house": {
+                    "id": "house",
+                    "type": "string"
+                },
+                "house_number": {
+                    "id": "house_number",
+                    "type": "string"
+                },
+                "road": {
+                    "id": "road",
+                    "type": "string"
+                },
+                "city": {
+                    "id": "city",
+                    "type": "string"
+                },
+                "county": {
+                    "id": "county",
+                    "type": "string"
+                },
+                "state": {
+                    "id": "state",
+                    "type": "string"
+                },
+                "postcode": {
+                    "id": "postcode",
+                    "type": "string"
+                },
+                "suburb": {
+                    "id": "suburb",
+                    "type": "string"
+                },
+                "residential": {
+                    "id": "residential",
+                    "type": "string"
+                },
+                "village": {
+                    "id": "village",
+                    "type": "string"
+                },
+                "footway": {
+                    "id": "footway",
+                    "type": "string"
+                },
+                "station": {
+                    "id": "station",
+                    "type": "string"
+                },
+                "country": {
+                    "id": "country",
+                    "type": "string"
+                },
+                "country_code": {
+                    "id": "country_code",
+                    "type": "string"
+                }
+            }
+        },
+
+        "Search": {
+            "id": "Search",
+            "title": "Search",
+            "type": "object",
+            "properties": {
+                "place_id": {
+                    "id": "place_id",
+                    "type": "string"
+                },
+                "licence": {
+                    "id": "licence",
+                    "type": "string"
+                },
+                "boundingbox": {
+                    "id": "boundingbox",
+                    "type": "array",
+                    "items": [
+                        {
+                            "id": "Coordinate",
+                            "type": "string"
+                        }
+                    ]
+                },
+                "icon": {
+                    "id": "icon",
+                    "type":  "string"
+                },
+                "osm_type": {
+                    "id": "osm_type",
+                    "type":  "string"
+                },
+                "osm_id": {
+                    "id": "osm_id",
+                    "type":  "string"
+                },
+                "lat": {
+                    "id": "lat",
+                    "type": "string"
+                },
+                "lon": {
+                    "id": "lon",
+                    "type": "string"
+                },
+                "display_name": {
+                    "id": "display_name",
+                    "type": "string"
+                },
+                "class": {
+                    "id": "class",
+                    "type": "string"
+                },
+                "type": {
+                    "id": "type",
+                    "type": "string"
+                },
+                "importance": {
+                    "id": "importance",
+                    "type": "number"
+                },
+                "address": { "$ref": "Address" }
+            }
+        },
+
+        "SearchArray": {
+            "id": "SearchArray",
+            "title": "SearchArray",
+            "type": "array",
+            "items": { "$ref": "Search" }
+        }
+    },
+    "endpoints": [
+        {
+            "path": "search?format=json&q={Query}&addressdetails=1&dedupe=1",
+            "actions": [
+                {
+                    "entityName": "Search",
+                    "method": "GET",
+                    "methodName": "SearchRead",
+                    "methodType": "Read",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "Search"
+                    }
+                }
+            ],
+            "parameters": {
+                "Query": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "path": "search?format=json&q={Query}&addressdetails=1&dedupe=1",
+            "actions": [
+                {
+                    "entityName": "Search",
+                    "method": "GET",
+                    "methodName": "Search",
+                    "methodType": "List",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "SearchArray"
+                    }
+                }
+            ],
+            "parameters": {
+                "Query": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "path": "reverse?format=json&lat={Latitude}&lon={Longitude}&addressdetail=1&zoom={Zoom}",
+            "actions": [
+                {
+                    "entityName": "Search",
+                    "method": "GET",
+                    "methodName": "Reverse",
+                    "methodType": "Read",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "Search"
+                    }
+                }
+            ],
+            "parameters": {
+                "Latitude": {
+                    "type": "string"
+                },
+                "Longitude": {
+                    "type": "string"
+                },
+                "Zoom": {
+                    "type": "string"
+                }
+            }
+        }
+
+    ]
+}

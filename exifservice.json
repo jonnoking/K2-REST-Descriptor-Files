@@ -1,0 +1,140 @@
+{
+    "version": "1.0",
+    "baseUri": "http://k2fieldtwilio.azurewebsites.net/",
+    "entities": {
+        "EXIF": {
+            "id": "EXIF",
+            "title":  "EXIF",
+            "type": "object",
+            "properties": {
+                "GPSLatatitude": {
+                    "id": "GPSLatatitude",
+                    "type": "string"
+                },
+              "GPSLatatitudeDegrees": {
+                  "id": "GPSLatatitudeDegrees",
+                  "type": "string"
+              },
+              "GPSLatatitudeRef": {
+                  "id": "GPSLatatitudeRef",
+                  "type": "string"
+              },
+              "GPSLongitude": {
+                  "id": "GPSLongitude",
+                  "type": "string"
+              },
+              "GPSLongitudeDegrees": {
+                  "id": "GPSLongitudeDegrees",
+                  "type": "string"
+              },
+              "GPSLongitudeRef": {
+                  "id": "GPSLongitudeRef",
+                  "type": "string"
+              },
+              "GPSCoordinates": {
+                  "id": "GPSCoordinates",
+                  "type": "string"
+              },
+              "GPSAltitude": {
+                  "id": "GPSAltitude",
+                  "type": "string"
+              },
+              "GPSAltitudeRef": {
+                  "id": "GPSAltitudeRef",
+                  "type": "string"
+              },
+              "GPSImageDirection": {
+                  "id": "GPSImageDirection",
+                  "type": "string"
+              },
+              "GPSImageDirectionRef": {
+                  "id": "GPSImageDirectionRef",
+                  "type": "string"
+              },
+              "GPSTimeStamp": {
+                  "id": "GPSTimeStamp",
+                  "type": "string"
+              },
+              "Make": {
+                  "id": "Make",
+                  "type": "string"
+              },
+              "Model": {
+                  "id": "Model",
+                  "type": "string"
+              },
+              "Orientation": {
+                  "id": "Orientation",
+                  "type": "null"
+              },
+              "Software": {
+                  "id": "Software",
+                  "type": "string"
+              },
+              "VerticalResolution": {
+                  "id": "VerticalResolution",
+                  "type": "null"
+              },
+              "HoriztonalResolution": {
+                  "id": "HoriztonalResolution",
+                  "type": "null"
+              },
+              "DateStamp": {
+                  "id": "DateStamp",
+                  "type": "string"
+              },
+              "Flash": {
+                  "id": "Flash",
+                  "type": "string"
+              },
+              "Width": {
+                  "id": "Width",
+                  "type": "string"
+              },
+              "Height": {
+                  "id": "Height",
+                  "type": "string"
+              }
+            }
+        }
+    },
+    "endpoints": [
+        {
+            "path": "api/EXIFByUrl/?url{PhotoUrl}",
+            "actions": [
+                {
+                    "entityName": "EXIF",
+                    "method": "GET",
+                    "methodName": "Get EXIF By Url",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "EXIF"
+                    }
+                }
+            ],
+            "parameters": {
+                "PhotoUrl": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "path": "api/EXIFByBase64",
+            "actions": [
+                {
+                    "entityName": "EXIF",
+                    "method": "GET",
+                    "methodName": "Get EXIF By Base64",
+                    "request": {
+                        "mediaType": "text/plain",
+                        "dataType": { "type": "string" }
+                    },
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "EXIF"
+                    }
+                }
+            ]
+        }
+    ]
+}

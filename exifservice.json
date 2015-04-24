@@ -123,7 +123,7 @@
             "actions": [
                 {
                     "entityName": "EXIF",
-                    "method": "GET",
+                    "method": "POST",
                     "methodName": "Get EXIF By Base64",
                     "request": {
                         "mediaType": "text/plain",

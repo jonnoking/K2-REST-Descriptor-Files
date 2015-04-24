@@ -65,7 +65,7 @@
               },
               "Orientation": {
                   "id": "Orientation",
-                  "type": "null"
+                  "type": "string"
               },
               "Software": {
                   "id": "Software",
@@ -73,11 +73,11 @@
               },
               "VerticalResolution": {
                   "id": "VerticalResolution",
-                  "type": "null"
+                  "type": "string"
               },
               "HoriztonalResolution": {
                   "id": "HoriztonalResolution",
-                  "type": "null"
+                  "type": "string"
               },
               "DateStamp": {
                   "id": "DateStamp",
@@ -100,12 +100,12 @@
     },
     "endpoints": [
         {
-            "path": "api/EXIFByUrl/?url{PhotoUrl}",
+            "path": "api/EXIFByUrl/?url={PhotoUrl}",
             "actions": [
                 {
                     "entityName": "EXIF",
                     "method": "GET",
-                    "methodName": "Get EXIF By Url",
+                    "methodName": "GetEXIFByUrl",
                     "response": {
                         "mediaType": "application/json",
                         "dataType": "EXIF"
@@ -124,7 +124,7 @@
                 {
                     "entityName": "EXIF",
                     "method": "POST",
-                    "methodName": "Get EXIF By Base64",
+                    "methodName": "GetEXIFByBase64",
                     "request": {
                         "mediaType": "text/plain",
                         "dataType": { "type": "string" }

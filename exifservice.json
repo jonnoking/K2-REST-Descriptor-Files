@@ -2,9 +2,9 @@
     "version": "1.0",
     "baseUri": "http://k2fieldtwilio.azurewebsites.net/",
     "entities": {
-        "EXIF": {
-            "id": "EXIF",
-            "title":  "EXIF",
+        "Exif": {
+            "id": "Exif",
+            "title":  "Exif",
             "type": "object",
             "properties": {
                 "GPSLatatitude": {
@@ -13,7 +13,7 @@
                 },
               "GPSLatatitudeDegrees": {
                   "id": "GPSLatatitudeDegrees",
-                  "type": "string"
+                  "type": "number"
               },
               "GPSLatatitudeRef": {
                   "id": "GPSLatatitudeRef",
@@ -25,7 +25,7 @@
               },
               "GPSLongitudeDegrees": {
                   "id": "GPSLongitudeDegrees",
-                  "type": "string"
+                  "type": "number"
               },
               "GPSLongitudeRef": {
                   "id": "GPSLongitudeRef",
@@ -89,26 +89,26 @@
               },
               "Width": {
                   "id": "Width",
-                  "type": "string"
+                  "type": "number"
               },
               "Height": {
                   "id": "Height",
-                  "type": "string"
+                  "type": "number"
               }
             }
         }
     },
     "endpoints": [
         {
-            "path": "api/EXIFByUrl/?url={PhotoUrl}",
+            "path": "api/ExifByUrl/?url={PhotoUrl}",
             "actions": [
                 {
-                    "entityName": "EXIF",
+                    "entityName": "Exif",
                     "method": "GET",
-                    "methodName": "GetEXIFByUrl",
+                    "methodName": "GetExifByUrl",
                     "response": {
                         "mediaType": "application/json",
-                        "dataType": "EXIF"
+                        "dataType": "Exif"
                     }
                 }
             ],
@@ -119,19 +119,19 @@
             }
         },
         {
-            "path": "api/EXIFByBase64",
+            "path": "api/ExifByBase64",
             "actions": [
                 {
-                    "entityName": "EXIF",
+                    "entityName": "Exif",
                     "method": "POST",
-                    "methodName": "GetEXIFByBase64",
+                    "methodName": "GetExifByBase64",
                     "request": {
                         "mediaType": "text/plain",
                         "dataType": { "type": "string" }
                     },
                     "response": {
                         "mediaType": "application/json",
-                        "dataType": "EXIF"
+                        "dataType": "Exif"
                     }
                 }
             ]

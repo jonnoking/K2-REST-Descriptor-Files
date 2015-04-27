@@ -997,6 +997,30 @@
             }
         },
         {
+            "path": "{tenantid}/users/{userid}?$Select=AboutMe,PastProjects,MySite,Responsibilities,Tags,Skills,Schools,Birthday,Interests,HireDate,Alias,PreferredName,PrincipalName",
+            "actions": [
+                {
+                    "entityName": "User",
+                    "method": "GET",
+                    "methodType": "Read",
+                    "methodName": "GetUserExtendedProperties",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "User"
+                    }
+                }
+            ],
+            "parameters": {
+                "tenantid": {
+                    "type": "string"
+                },
+                "userid": {
+                    "type": "string"
+                }
+            }
+        },
+
+        {
             "path": "{tenantid}/users/{userid}/files",
             "actions": [
                 {
@@ -1144,6 +1168,33 @@
                     "type": "string"
                 },
                 "fileid": {
+                    "type": "string"
+                }
+            }
+        },
+        {
+            "path": "{tenantid}/users/{userid}/files/{folderid}/children",
+            "actions": [
+                {
+                    "entityName": "File",
+                    "method": "GET",
+                    "methodType": "List",
+                    "methodName": "GetUserFolderFiles",
+                    "response": {
+                        "mediaType": "application/json",
+                        "dataType": "FileArray",
+                        "property": "value"
+                    }
+                }
+            ],
+            "parameters": {
+                "tenantid": {
+                    "type": "string"
+                },
+                "userid": {
+                    "type": "string"
+                },
+                "folderid": {
                     "type": "string"
                 }
             }

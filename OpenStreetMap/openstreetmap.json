@@ -164,7 +164,7 @@
                         "description": "Success",
                         "schema": {
                             "type": "array",
-                            "items": { "$ref": "#/definitions/SearchArray" }
+                            "items": { "$ref": "#/definitions/Search" }
                             
                         }
                     }

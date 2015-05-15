@@ -120,13 +120,13 @@
                     "id": "importance",
                     "type": "number"
                 },
-                "address": { "$ref": "Address" }
+                "address": { "$ref": "#/definitions/Address" }
             }
         },
 
         "SearchArray": {
             "type": "array",
-            "items": { "$ref": "Search" }
+            "items": { "$ref": "#/definitions/Search" }
         }
     },
     "paths": {

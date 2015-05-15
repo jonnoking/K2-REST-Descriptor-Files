@@ -122,11 +122,6 @@
                 },
                 "address": { "$ref": "#/definitions/Address" }
             }
-        },
-
-        "SearchArray": {
-            "type": "array",
-            "items": { "$ref": "#/definitions/Search" }
         }
     },
     "paths": {
@@ -167,7 +162,11 @@
                 "responses": {
                     "200": {
                         "description": "Success",
-                        "schema": { "$ref": "#/definitions/SearchArray" }
+                        "schema": {
+                            "type": "array",
+                            "items": { "$ref": "#/definitions/SearchArray" }
+                            
+                        }
                     }
                 }
             }

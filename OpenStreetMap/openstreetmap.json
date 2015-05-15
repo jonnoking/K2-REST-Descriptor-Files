@@ -133,8 +133,8 @@
         "search?format=json&q={Query}&addressdetails=1&dedupe=1": {
             "get": {
                 "operationId": "SearchRead",
-                "consumes": ["application/json"],
-                "produces": ["application/json"],
+                "consumes": [ "application/json" ],
+                "produces": [ "application/json" ],
                 "parameters": [
                     {
                         "name": "Query",
@@ -154,8 +154,8 @@
         "search?format=json&q={Query}&addressdetails=1&dedupe=1&foo=changeSignature": {
             "get": {
                 "operationId": "Search",
-                "consumes": ["application/json"],
-                "produces": ["application/json"],
+                "consumes": [ "application/json" ],
+                "produces": [ "application/json" ],
                 "parameters": [
                     {
                         "name": "Query",
@@ -167,7 +167,10 @@
                 "responses": {
                     "200": {
                         "description": "Success",
-                        "schema": { "$ref": "#/definitions/SearchArray" }
+                        "schema": {
+                            "type": "array",
+                            "items": { "$ref": "#/definitions/Search" }
+                        }
                     }
                 }
             }
@@ -175,8 +178,8 @@
         "reverse?format=json&lat={Latitude}&lon={Longitude}&addressdetail=1&zoom={Zoom}": {
             "get": {
                 "operationId": "Reverse",
-                "consumes": ["application/json"],
-                "produces": ["application/json"],
+                "consumes": [ "application/json" ],
+                "produces": [ "application/json" ],
                 "parameters": [
                     {
                         "name": "Latitude",

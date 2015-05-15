@@ -167,10 +167,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
-                        "schema": {
-                            "type": "array",
-                            "items": { "$ref": "#/definitions/Search" }
-                        }
+                        "schema": { "$ref": "#/definitions/SearchArray" }
                     }
                 }
             }

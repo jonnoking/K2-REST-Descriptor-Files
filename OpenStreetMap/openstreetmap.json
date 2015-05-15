@@ -146,7 +146,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
-                        "type": { "$ref": "#/definitions/Search" }
+                        "schema": { "$ref": "#/definitions/Search" }
                     }
                 }
             }
@@ -167,7 +167,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
-                        "type": { "$ref": "#/definitions/SearchArray" }
+                        "schema": { "$ref": "#/definitions/SearchArray" }
                     }
                 }
             }
@@ -200,7 +200,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
-                        "type": { "$ref": "#/definitions/Search" }
+                        "schema": { "$ref": "#/definitions/Search" }
                     }
                 }
             }

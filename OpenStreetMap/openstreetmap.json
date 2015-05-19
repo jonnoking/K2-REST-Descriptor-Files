@@ -77,12 +77,10 @@
                 "boundingbox": {
                     "id": "boundingbox",
                     "type": "array",
-                    "items": [
-                        {
-                            "id": "Coordinate",
-                            "type": "string"
-                        }
-                    ]
+                    "items": {
+												"id": "Coordinate",
+												"type": "string"
+                    }
                 },
                 "icon": {
                     "id": "icon",

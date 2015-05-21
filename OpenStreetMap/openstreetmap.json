@@ -1,11 +1,10 @@
 {
-    "version": "1.0",
-    "baseUri": "http://nominatim.openstreetmap.org/",
-    "entities": {
+    "swagger": "2.0",
+    "host": "nominatim.openstreetmap.org",
+    "basePath": "/",
+    "schemes": [ "http" ],
+    "definitions": {
         "Address": {
-            "id": "Address",
-            "title": "Address",
-            "type": "object",
             "properties": {
                 "house": {
                     "id": "house",
@@ -65,11 +64,7 @@
                 }
             }
         },
-
         "Search": {
-            "id": "Search",
-            "title": "Search",
-            "type": "object",
             "properties": {
                 "place_id": {
                     "id": "place_id",
@@ -82,24 +77,22 @@
                 "boundingbox": {
                     "id": "boundingbox",
                     "type": "array",
-                    "items": [
-                        {
-                            "id": "Coordinate",
-                            "type": "string"
-                        }
-                    ]
+                    "items": {
+												"id": "Coordinate",
+												"type": "string"
+                    }
                 },
                 "icon": {
                     "id": "icon",
-                    "type":  "string"
+                    "type": "string"
                 },
                 "osm_type": {
                     "id": "osm_type",
-                    "type":  "string"
+                    "type": "string"
                 },
                 "osm_id": {
                     "id": "osm_id",
-                    "type":  "string"
+                    "type": "string"
                 },
                 "lat": {
                     "id": "lat",
@@ -125,84 +118,89 @@
                     "id": "importance",
                     "type": "number"
                 },
-                "address": { "$ref": "Address" }
+                "address": { "$ref": "#/definitions/Address" }
             }
-        },
-
-        "SearchArray": {
-            "id": "SearchArray",
-            "title": "SearchArray",
-            "type": "array",
-            "items": { "$ref": "Search" }
         }
     },
-    "endpoints": [
-        {
-            "path": "search?format=json&q={Query}&addressdetails=1&dedupe=1",
-            "actions": [
-                {
-                    "entityName": "Search",
-                    "method": "GET",
-                    "methodName": "SearchRead",
-                    "methodType": "Read",
-                    "response": {
-                        "mediaType": "application/json",
-                        "dataType": "Search"
+    "paths": {
+        "search?format=json&q={Query}&addressdetails=1&dedupe=1": {
+            "get": {
+                "operationId": "SearchRead",
+                "consumes": [ "application/json" ],
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+                        "name": "Query",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
                     }
-                }
-            ],
-            "parameters": {
-                "Query": {
-                    "type": "string"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": { "$ref": "#/definitions/Search" }
+                    }
                 }
             }
         },
-        {
-            "path": "search?format=json&q={Query}&addressdetails=1&dedupe=1",
-            "actions": [
-                {
-                    "entityName": "Search",
-                    "method": "GET",
-                    "methodName": "Search",
-                    "methodType": "List",
-                    "response": {
-                        "mediaType": "application/json",
-                        "dataType": "SearchArray"
+        "search?format=json&q={Query}&addressdetails=1&dedupe=1&foo=changeSignature": {
+            "get": {
+                "operationId": "Search",
+                "consumes": [ "application/json" ],
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+                        "name": "Query",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
                     }
-                }
-            ],
-            "parameters": {
-                "Query": {
-                    "type": "string"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": { "$ref": "#/definitions/Search" }
+                            
+                        }
+                    }
                 }
             }
         },
-        {
-            "path": "reverse?format=json&lat={Latitude}&lon={Longitude}&addressdetail=1&zoom={Zoom}",
-            "actions": [
-                {
-                    "entityName": "Search",
-                    "method": "GET",
-                    "methodName": "Reverse",
-                    "methodType": "Read",
-                    "response": {
-                        "mediaType": "application/json",
-                        "dataType": "Search"
+        "reverse?format=json&lat={Latitude}&lon={Longitude}&addressdetail=1&zoom={Zoom}": {
+            "get": {
+                "operationId": "Reverse",
+                "consumes": [ "application/json" ],
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+                        "name": "Latitude",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Longitude",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Zoom",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
                     }
-                }
-            ],
-            "parameters": {
-                "Latitude": {
-                    "type": "string"
-                },
-                "Longitude": {
-                    "type": "string"
-                },
-                "Zoom": {
-                    "type": "string"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": { "$ref": "#/definitions/Search" }
+                    }
                 }
             }
         }
-
-    ]
+    },
 }

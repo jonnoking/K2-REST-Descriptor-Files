@@ -1,6 +1,6 @@
 {
     "swagger": "2.0",
-    "host": "k2fieldtwilio.azurewebsites.net/",
+    "host": "k2fieldtwilio.azurewebsites.net",
     "basePath": "/",
     "schemes": [ "http" ],
     "definitions": {
@@ -10,95 +10,103 @@
                     "id": "GPSLatatitude",
                     "type": "string"
                 },
-              "GPSLatatitudeDegrees": {
-                  "id": "GPSLatatitudeDegrees",
-                  "type": "number"
-              },
-              "GPSLatatitudeRef": {
-                  "id": "GPSLatatitudeRef",
-                  "type": "string"
-              },
-              "GPSLongitude": {
-                  "id": "GPSLongitude",
-                  "type": "string"
-              },
-              "GPSLongitudeDegrees": {
-                  "id": "GPSLongitudeDegrees",
-                  "type": "number"
-              },
-              "GPSLongitudeRef": {
-                  "id": "GPSLongitudeRef",
-                  "type": "string"
-              },
-              "GPSCoordinates": {
-                  "id": "GPSCoordinates",
-                  "type": "string"
-              },
-              "GPSAltitude": {
-                  "id": "GPSAltitude",
-                  "type": "string"
-              },
-              "GPSAltitudeRef": {
-                  "id": "GPSAltitudeRef",
-                  "type": "string"
-              },
-              "GPSImageDirection": {
-                  "id": "GPSImageDirection",
-                  "type": "string"
-              },
-              "GPSImageDirectionRef": {
-                  "id": "GPSImageDirectionRef",
-                  "type": "string"
-              },
-              "GPSTimeStamp": {
-                  "id": "GPSTimeStamp",
-                  "type": "string"
-              },
-              "Make": {
-                  "id": "Make",
-                  "type": "string"
-              },
-              "Model": {
-                  "id": "Model",
-                  "type": "string"
-              },
-              "Orientation": {
-                  "id": "Orientation",
-                  "type": "string"
-              },
-              "Software": {
-                  "id": "Software",
-                  "type": "string"
-              },
-              "VerticalResolution": {
-                  "id": "VerticalResolution",
-                  "type": "string"
-              },
-              "HoriztonalResolution": {
-                  "id": "HoriztonalResolution",
-                  "type": "string"
-              },
-              "DateStamp": {
-                  "id": "DateStamp",
-                  "type": "string"
-              },
-              "Flash": {
-                  "id": "Flash",
-                  "type": "string"
-              },
-              "Width": {
-                  "id": "Width",
-                  "type": "number"
-              },
-              "Height": {
-                  "id": "Height",
-                  "type": "number"
-              }
+                "GPSLatatitudeDegrees": {
+                    "id": "GPSLatatitudeDegrees",
+                    "type": "number"
+                },
+                "GPSLatatitudeRef": {
+                    "id": "GPSLatatitudeRef",
+                    "type": "string"
+                },
+                "GPSLongitude": {
+                    "id": "GPSLongitude",
+                    "type": "string"
+                },
+                "GPSLongitudeDegrees": {
+                    "id": "GPSLongitudeDegrees",
+                    "type": "number"
+                },
+                "GPSLongitudeRef": {
+                    "id": "GPSLongitudeRef",
+                    "type": "string"
+                },
+                "GPSCoordinates": {
+                    "id": "GPSCoordinates",
+                    "type": "string"
+                },
+                "GPSAltitude": {
+                    "id": "GPSAltitude",
+                    "type": "string"
+                },
+                "GPSAltitudeRef": {
+                    "id": "GPSAltitudeRef",
+                    "type": "string"
+                },
+                "GPSImageDirection": {
+                    "id": "GPSImageDirection",
+                    "type": "string"
+                },
+                "GPSImageDirectionRef": {
+                    "id": "GPSImageDirectionRef",
+                    "type": "string"
+                },
+                "GPSTimeStamp": {
+                    "id": "GPSTimeStamp",
+                    "type": "string"
+                },
+                "Make": {
+                    "id": "Make",
+                    "type": "string"
+                },
+                "Model": {
+                    "id": "Model",
+                    "type": "string"
+                },
+                "Orientation": {
+                    "id": "Orientation",
+                    "type": "string"
+                },
+                "Software": {
+                    "id": "Software",
+                    "type": "string"
+                },
+                "VerticalResolution": {
+                    "id": "VerticalResolution",
+                    "type": "string"
+                },
+                "HoriztonalResolution": {
+                    "id": "HoriztonalResolution",
+                    "type": "string"
+                },
+                "DateStamp": {
+                    "id": "DateStamp",
+                    "type": "string"
+                },
+                "Flash": {
+                    "id": "Flash",
+                    "type": "string"
+                },
+                "Width": {
+                    "id": "Width",
+                    "type": "number"
+                },
+                "Height": {
+                    "id": "Height",
+                    "type": "number"
+                }
+            }
+        },
+        "Base64": {
+            "properties": {
+                "Base64File": {
+                    "id": "Base64File",
+                    "type": "string"
+                }
             }
         }
     },
     "paths": {
-        "api/ExifByUrl/?url={PhotoUrl}" : {
+        "api/ExifByUrl/?url={PhotoUrl}": {
             "get": {
                 "operationId": "ExifByUrl",
                 "consumes": [ "application/json" ],
@@ -114,7 +122,7 @@
                 "responses": {
                     "200": {
                         "description": "Success",
-                        "schema": { "$ref": "#/" }
+                        "schema": { "$ref": "Exif" }
                     }
                 }
             }
@@ -122,24 +130,23 @@
         "api/ExifByBase64": {
             "post": {
                 "operationId": "ExifByBase64",
-                "consumes": [ "text/plain" ],
                 "produces": [ "application/json" ],
                 "parameters": [
                     {
                         "name": "Base64",
                         "in": "body",
-                        "required": true,
-                        "type": "string"
+                        "type": "string",
+                        "schema": { "$ref" : "Base64" }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "Success",
-                        "schema": { "$ref": "#/" }
-                            
-                        }
+                        "schema": { "$ref": "Exif" }
+
                     }
                 }
             }
         }
-}
+    }
+    }

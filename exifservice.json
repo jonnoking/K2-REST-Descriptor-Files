@@ -1,11 +1,10 @@
 {
-    "version": "1.0",
-    "baseUri": "http://k2fieldtwilio.azurewebsites.net/",
-    "entities": {
+    "swagger": "2.0",
+    "host": "k2fieldtwilio.azurewebsites.net/",
+    "basePath": "/",
+    "schemes": [ "http" ],
+    "definitions": {
         "Exif": {
-            "id": "Exif",
-            "title":  "Exif",
-            "type": "object",
             "properties": {
                 "GPSLatatitude": {
                     "id": "GPSLatatitude",
@@ -98,43 +97,49 @@
             }
         }
     },
-    "endpoints": [
-        {
-            "path": "api/ExifByUrl/?url={PhotoUrl}",
-            "actions": [
-                {
-                    "entityName": "Exif",
-                    "method": "GET",
-                    "methodName": "GetExifByUrl",
-                    "response": {
-                        "mediaType": "application/json",
-                        "dataType": "Exif"
+    "paths": {
+        "api/ExifByUrl/?url={PhotoUrl}" : {
+            "get": {
+                "operationId": "ExifByUrl",
+                "consumes": [ "application/json" ],
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+                        "name": "PhotoUrl",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
                     }
-                }
-            ],
-            "parameters": {
-                "PhotoUrl": {
-                    "type": "string"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": { "$ref": "#/" }
+                    }
                 }
             }
         },
-        {
-            "path": "api/ExifByBase64",
-            "actions": [
-                {
-                    "entityName": "Exif",
-                    "method": "POST",
-                    "methodName": "GetExifByBase64",
-                    "request": {
-                        "mediaType": "text/plain",
-                        "dataType": { "type": "string" }
-                    },
-                    "response": {
-                        "mediaType": "application/json",
-                        "dataType": "Exif"
+        "api/ExifByBase64": {
+            "post": {
+                "operationId": "ExifByBase64",
+                "consumes": [ "text/plain" ],
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+                        "name": "Base64",
+                        "in": "body",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": { "$ref": "#/" }
+                            
+                        }
                     }
                 }
-            ]
+            }
         }
-    ]
 }

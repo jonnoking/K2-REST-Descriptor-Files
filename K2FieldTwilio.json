@@ -1,0 +1,82 @@
+{
+    "swagger": "2.0",
+    "host": "k2fieldtwilio.azurewebsites.net",
+    "basePath": "/api/",
+    "schemes": [ "http" ],
+    "definitions": {
+    },
+    "paths": {
+        "TwilioSMS?uid={K2Identifier}&message={Message}&to={PhoneNumber}": {
+            "get": {
+                "operationId": "SendSMS",
+                "parameters": [
+                    {
+                        "name": "K2Identifier",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Message",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "PhoneNumber",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "401": {
+                        "description": "Unauthorized"                        
+                    },
+                    "400": {
+                        "description": "Bad Request"                        
+                    }
+                }
+            }
+        },
+        "TwilioCall?uid={K2Identifier}&to={PhoneNumber}&message={Message}": {
+            "get": {
+                "operationId": "SendVoiceMessage",
+                "parameters": [
+                    {
+                        "name": "K2Identifier",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Message",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "PhoneNumber",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "401": {
+                        "description": "Unauthorized"                        
+                    },
+                    "400": {
+                        "description": "Bad Request"                        
+                    }
+                }
+            }
+        }
+    }
+}

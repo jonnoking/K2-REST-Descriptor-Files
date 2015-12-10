@@ -93,6 +93,9 @@
                 "JurisType": { 
                     "type":  "string"
                 },
+                "JurisCode": { 
+                    "type":  "string"
+                },
                 "Rate": { 
                     "type":  "string"
                 },

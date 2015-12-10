@@ -1,0 +1,111 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "v1",
+        "title": "AvaTax REST API"
+    },
+    "host": "development.avalara.net",
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/1.0/tax/{location}/get": {
+            "get": {
+                "tags": [
+                    "EstimatedTax"
+                ],
+                "operationId": "EstimatedTax",
+                "consumes": [ ],
+                "produces": [
+                    "text/json",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "location",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "saleamount",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/EstimatedTax"
+                        }
+                    },
+                    "400": {
+                        "description": "Error"
+                    },
+                    "401": {
+                        "description": "Not Authorized"
+                    },
+                    "429": {
+                        "description": "Rate limiting has been exceeded. Try again later."
+                    }
+                },
+                "deprecated": false
+            }
+        }
+    },
+    "definitions": {
+        "Object": {
+            "type": "object",
+            "properties": { }
+        },
+        "EstimatedTax": {
+            "type": "object",
+            "properties": {
+                "Rate": {
+                    "type": "string"
+                },
+                "Tax": {
+                    "type": "string"
+                },
+                "ResultCode": {
+                    "type": "string"
+                },
+
+                "TaxDetails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/TaxDetails"
+                    }
+                }
+            }
+        },
+        "TaxDetails": {
+            "type": "object",
+            "properties": {
+                "Country": {
+                    "type": "string"
+                },
+                "Region": {
+                    "type": "string"
+                },
+                "JurisType": { 
+                    "type":  "string"
+                },
+                "Rate": { 
+                    "type":  "string"
+                },
+                "Tax": { 
+                    "type":  "string"
+                },
+                "JurisName": { 
+                    "type":  "string"
+                },
+                "TaxName": { 
+                    "type":  "string"
+                }
+            }
+        }
+    }
+}

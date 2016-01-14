@@ -1,0 +1,56 @@
+﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:dr="http://schemas.microsoft.com/dallas/2010/04">
+  <edmx:DataServices m:DataServiceVersion="3.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+    <Schema Namespace="TextAnalytics.FrontEndService.Models" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <ComplexType Name="ClusterAssignmentRecord">
+        <Property Name="Id" Type="Edm.String" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="ClusterId" Type="Edm.Int32" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="ClusterSimilarity" Type="Edm.Double" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="ItemSentiment" Type="Edm.Double" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="ItemKeyPhrases" Type="Collection(Edm.String)" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+      </ComplexType>
+      <ComplexType Name="ErrorRecord">
+        <Property Name="Id" Type="Edm.String" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="Message" Type="Edm.String" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+      </ComplexType>
+      <ComplexType Name="AnalyzeClusterResult">
+        <Property Name="AnalyzeClusterResults" Type="Collection(TextAnalytics.FrontEndService.Models.ClusterAssignmentRecord)" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="Errors" Type="Collection(TextAnalytics.FrontEndService.Models.ErrorRecord)" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+      </ComplexType>
+      <ComplexType Name="SentimentBatchResultItem">
+        <Property Name="Score" Type="Edm.Double" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="Id" Type="Edm.String" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+      </ComplexType>
+      <ComplexType Name="SentimentBatchResult">
+        <Property Name="SentimentBatch" Type="Collection(TextAnalytics.FrontEndService.Models.SentimentBatchResultItem)" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="Errors" Type="Collection(TextAnalytics.FrontEndService.Models.ErrorRecord)" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+      </ComplexType>
+      <ComplexType Name="KeyPhraseBatchResultItem">
+        <Property Name="KeyPhrases" Type="Collection(Edm.String)" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="Id" Type="Edm.String" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+      </ComplexType>
+      <ComplexType Name="KeyPhraseBatchResult">
+        <Property Name="KeyPhrasesBatch" Type="Collection(TextAnalytics.FrontEndService.Models.KeyPhraseBatchResultItem)" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+        <Property Name="Errors" Type="Collection(TextAnalytics.FrontEndService.Models.ErrorRecord)" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+      </ComplexType>
+      <ComplexType Name="KeyPhraseResult">
+        <Property Name="KeyPhrases" Type="Collection(Edm.String)" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+      </ComplexType>
+      <ComplexType Name="SentimentResult">
+        <Property Name="Score" Type="Edm.Double" Nullable="false" dr:Queryable="true" dr:Returned="true" />
+      </ComplexType>
+    </Schema>
+    <Schema Namespace="TextAnalytics.FrontEndService.Controllers" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <EntityContainer Name="TextAnalytics" m:IsDefaultEntityContainer="true">
+        <FunctionImport Name="AnalyzeCluster" ReturnType="TextAnalytics.FrontEndService.Models.AnalyzeClusterResult" IsSideEffecting="false" dr:QueryResourceCost="1" />
+        <FunctionImport Name="GetSentimentBatch" ReturnType="TextAnalytics.FrontEndService.Models.SentimentBatchResult" IsSideEffecting="false" dr:QueryResourceCost="1" />
+        <FunctionImport Name="GetKeyPhrasesBatch" ReturnType="TextAnalytics.FrontEndService.Models.KeyPhraseBatchResult" IsSideEffecting="false" dr:QueryResourceCost="1" />
+        <FunctionImport Name="GetKeyPhrases" ReturnType="TextAnalytics.FrontEndService.Models.KeyPhraseResult" IsSideEffecting="false" dr:QueryResourceCost="1">
+          <Parameter Name="text" Type="Edm.String" Nullable="false" p8:SampleValues="Today is a good day" p8:Description="Text string" xmlns:p8="http://schemas.microsoft.com/dallas/2010/04" />
+        </FunctionImport>
+        <FunctionImport Name="GetSentiment" ReturnType="TextAnalytics.FrontEndService.Models.SentimentResult" IsSideEffecting="false" dr:QueryResourceCost="1">
+          <Parameter Name="text" Type="Edm.String" Nullable="false" p8:SampleValues="Today is a good day" p8:Description="Text string" xmlns:p8="http://schemas.microsoft.com/dallas/2010/04" />
+        </FunctionImport>
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

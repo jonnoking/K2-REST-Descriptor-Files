@@ -1,0 +1,80 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "v1",
+        "title": "Slack App"
+    },
+    "host": "slack.com",
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/api/api.text}": {
+            "get": {
+                "tags": [
+                    "api.text"
+                ],
+                "operationId": "api.test",
+                "consumes": [ ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Error"
+					},
+                    "400": {
+                        "description": "Error"
+                    },
+                    "401": {
+                        "description": "Not Authorized"
+                    },
+                    "500": {
+                        "description": "Error"
+                    }
+                },
+                "deprecated": false
+            }
+        }
+    },
+    "definitions": {
+        "Object": {
+            "type": "object",
+            "properties": { }
+        },
+        "SlackMessage": {
+            "type": "object",
+            "properties": {
+                "text": {
+                    "type": "string"
+                },
+                "channel": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "icon_emoji": {
+                    "type": "string"
+                },
+                "icon_url": {
+                    "type": "string"
+                }
+
+            }
+        },
+        "SlackReturn": {
+            type: "object",
+            properties: {
+                "ok": {
+                    "type": "string"
+                },
+                "error": {
+                    "type": "string"
+                }            
+			}
+        }
+    }
+}

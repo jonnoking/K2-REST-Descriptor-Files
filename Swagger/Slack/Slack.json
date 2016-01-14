@@ -1,0 +1,95 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "v1",
+        "title": "Slack"
+    },
+    "host": "hooks.slack.com",
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/services/{Segment1}/{Segment2}/{Segment3}": {
+            "post": {
+                "tags": [
+                    "SendMessage"
+                ],
+                "operationId": "SendMessage",
+                "consumes": [ ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Segment1",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Segment2",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Segment3",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Message",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SlackMessage"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Error"
+                    },
+                    "401": {
+                        "description": "Not Authorized"
+                    },
+                    "500": {
+                        "description": "Something went wrong"
+                    }
+                },
+                "deprecated": false
+            }
+        }
+    },
+    "definitions": {
+        "Object": {
+            "type": "object",
+            "properties": { }
+        },
+        "SlackMessage": {
+            "type": "object",
+            "properties": {
+                "text": {
+                    "type": "string"
+                },
+                "channel": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "icon_emoji": {
+                    "type": "string"
+                },
+                "icon_url": { 
+                    "type":  "string"
+                }
+
+            }
+        }
+    }
+    }

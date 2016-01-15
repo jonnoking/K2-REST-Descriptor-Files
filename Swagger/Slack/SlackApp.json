@@ -9,10 +9,10 @@
         "https"
     ],
     "paths": {
-        "/api/api.text}": {
+        "/api/api.test": {
             "get": {
                 "tags": [
-                    "api.text"
+                    "api.test"
                 ],
                 "operationId": "api.test",
                 "consumes": [ ],
@@ -23,7 +23,48 @@
                 ],
                 "responses": {
                     "200": {
+                        "description":  "Success",
+                        "schema": {
+                            "$ref": "#/definitions/SlackReturn"
+                        }
+					},
+                    "400": {
                         "description": "Error"
+                    },
+                    "401": {
+                        "description": "Not Authorized"
+                    },
+                    "500": {
+                        "description": "Error"
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/api/auth.test": {
+            "get": {
+                "tags": [
+                    "auth.test"
+                ],
+                "operationId": "auth.test",
+                "consumes": [ ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description":  "Success",
+                        "schema": {
+                            "$ref": "#/definitions/SlackAuthTest"
+                        }
 					},
                     "400": {
                         "description": "Error"
@@ -66,8 +107,8 @@
             }
         },
         "SlackReturn": {
-            type: "object",
-            properties: {
+            "type": "object",
+            "properties": {
                 "ok": {
                     "type": "string"
                 },
@@ -75,6 +116,33 @@
                     "type": "string"
                 }            
 			}
+        },
+        "SlackAuthTest": {
+            "type": "object",
+            "properties": {
+                "ok": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },            
+                "team": {
+                    "type": "string"
+                },            
+                "user": {
+                    "type": "string"
+                },            
+                "team_id": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "string"
+                },
+                "error": {
+                    "type": "string"
+                }            
+			}
         }
+
     }
 }

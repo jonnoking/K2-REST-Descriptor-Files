@@ -1,148 +1,353 @@
 {
-    "swagger": "2.0",
-    "info": {
-        "version": "v1",
-        "title": "Slack App"
-    },
-    "host": "slack.com",
-    "schemes": [
-        "https"
-    ],
-    "paths": {
-        "/api/api.test": {
-            "get": {
-                "tags": [
-                    "api.test"
-                ],
-                "operationId": "api.test",
-                "consumes": [ ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                ],
-                "responses": {
-                    "200": {
-                        "description":  "Success",
-                        "schema": {
-                            "$ref": "#/definitions/SlackReturn"
-                        }
-					},
-                    "400": {
-                        "description": "Error"
-                    },
-                    "401": {
-                        "description": "Not Authorized"
-                    },
-                    "500": {
-                        "description": "Error"
-                    }
-                },
-                "deprecated": false
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "v1",
+    "title" : "Slack App"
+  },
+  "host" : "slack.com",
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/api/api.test" : {
+      "get" : {
+        "tags" : [ "api.test" ],
+        "operationId" : "api.test",
+        "consumes" : [ ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "$ref" : "#/definitions/SlackReturn"
             }
-        },
-        "/api/auth.test": {
-            "get": {
-                "tags": [
-                    "auth.test"
-                ],
-                "operationId": "auth.test",
-                "consumes": [ ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "token",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description":  "Success",
-                        "schema": {
-                            "$ref": "#/definitions/SlackAuthTest"
-                        }
-					},
-                    "400": {
-                        "description": "Error"
-                    },
-                    "401": {
-                        "description": "Not Authorized"
-                    },
-                    "500": {
-                        "description": "Error"
-                    }
-                },
-                "deprecated": false
-            }
+          },
+          "400" : {
+            "description" : "Error"
+          },
+          "401" : {
+            "description" : "Not Authorized"
+          },
+          "500" : {
+            "description" : "Error"
+          }
         }
+      }
     },
-    "definitions": {
-        "Object": {
-            "type": "object",
-            "properties": { }
-        },
-        "SlackMessage": {
-            "type": "object",
-            "properties": {
-                "text": {
-                    "type": "string"
-                },
-                "channel": {
-                    "type": "string"
-                },
-                "username": {
-                    "type": "string"
-                },
-                "icon_emoji": {
-                    "type": "string"
-                },
-                "icon_url": {
-                    "type": "string"
-                }
-
+    "/api/auth.test" : {
+      "get" : {
+        "tags" : [ "auth.test" ],
+        "operationId" : "auth.test",
+        "consumes" : [ ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "token",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "$ref" : "#/definitions/SlackAuthTest"
             }
-        },
-        "SlackReturn": {
-            "type": "object",
-            "properties": {
-                "ok": {
-                    "type": "string"
-                },
-                "error": {
-                    "type": "string"
-                }            
-			}
-        },
-        "SlackAuthTest": {
-            "type": "object",
-            "properties": {
-                "ok": {
-                    "type": "string"
-                },
-                "url": {
-                    "type": "string"
-                },            
-                "team": {
-                    "type": "string"
-                },            
-                "user": {
-                    "type": "string"
-                },            
-                "team_id": {
-                    "type": "string"
-                },
-                "user_id": {
-                    "type": "string"
-                },
-                "error": {
-                    "type": "string"
-                }            
-			}
+          },
+          "400" : {
+            "description" : "Error"
+          },
+          "401" : {
+            "description" : "Not Authorized"
+          },
+          "500" : {
+            "description" : "Error"
+          }
         }
+      }
+    },
+    "/api/channels.info" : {
+      "get" : {
+        "tags" : [ "SlackChannel" ],
+        "operationId" : "channels.info",
+        "consumes" : [ ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "token",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "channel",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "$ref" : "#/definitions/SlackChannelInfo"
+            }
+          },
+          "500" : {
+            "description" : "Error"
+          }
+        }
+      }
+    },
+    "/api/channels.create" : {
+      "get" : {
+        "tags" : [ "SlackChannel" ],
+        "operationId" : "channels.create",
+        "consumes" : [ ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "token",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "name",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "$ref" : "#/definitions/SlackChannelInfo"
+            }
+          },
+          "500" : {
+            "description" : "Error"
+          }
+        }
+      }
+    },
+    "/api/channels.join" : {
+      "get" : {
+        "tags" : [ "SlackChannel" ],
+        "operationId" : "channels.join",
+        "consumes" : [ ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "token",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "name",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "$ref" : "#/definitions/SlackChannelInfo"
+            }
+          },
+          "500" : {
+            "description" : "Error"
+          }
+        }
+      }
+    },
+    "/api/channels.leave" : {
+      "get" : {
+        "tags" : [ "SlackChannel" ],
+        "operationId" : "channels.leave",
+        "consumes" : [ ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "token",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "channel",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "$ref" : "#/definitions/SlackChannelInfo"
+            }
+          },
+          "500" : {
+            "description" : "Error"
+          }
+        }
+      }
+    },
 
+    "/api/channels.list" : {
+      "get" : {
+        "tags" : [ "SlackChannel" ],
+        "operationId" : "channels.list",
+        "consumes" : [ ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "token",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "exclude_archived",
+          "in" : "query",
+          "required" : false,
+          "type" : "number"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "schema" : {
+              "$ref" : "#/definitions/SlackChannelList"
+            }
+          },
+          "500" : {
+            "description" : "Error"
+          }
+        }
+      }
     }
+  },
+  "definitions" : {
+    "Object" : {
+      "type" : "object"
+    },
+    "SlackMessage" : {
+      "type" : "object",
+      "properties" : {
+        "text" : {
+          "type" : "string"
+        },
+        "channel" : {
+          "type" : "string"
+        },
+        "username" : {
+          "type" : "string"
+        },
+        "icon_emoji" : {
+          "type" : "string"
+        },
+        "icon_url" : {
+          "type" : "string"
+        }
+      }
+    },
+    "SlackReturn" : {
+      "type" : "object",
+      "properties" : {
+        "ok" : {
+          "type" : "string"
+        },
+        "error" : {
+          "type" : "string"
+        }
+      }
+    },
+    "SlackAuthTest" : {
+      "type" : "object",
+      "properties" : {
+        "ok" : {
+          "type" : "string"
+        },
+        "url" : {
+          "type" : "string"
+        },
+        "team" : {
+          "type" : "string"
+        },
+        "user" : {
+          "type" : "string"
+        },
+        "team_id" : {
+          "type" : "string"
+        },
+        "user_id" : {
+          "type" : "string"
+        },
+        "error" : {
+          "type" : "string"
+        }
+      }
+    },
+    "SlackChannelInfo" : {
+      "type" : "object",
+      "properties" : {
+        "ok" : {
+          "type" : "string"
+        },
+        "error" : {
+          "type" : "string"
+        },
+        "channel" : {
+          "$ref" : "#/definitions/Channel"
+        }
+      }
+    },
+    "SlackChannelList" : {
+      "type" : "object",
+      "properties" : {
+        "ok" : {
+          "type" : "string"
+        },
+        "error" : {
+          "type" : "string"
+        },
+        "channels" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Channel"
+          }
+        }
+      }
+    },
+    "Channel" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "is_channel" : {
+          "type" : "string"
+        },
+        "created" : {
+          "type" : "string"
+        },
+        "creator" : {
+          "type" : "string"
+        },
+        "is_archived" : {
+          "type" : "string"
+        },
+        "is_general" : {
+          "type" : "boolean"
+        },
+        "is_member" : {
+          "type" : "boolean"
+        },
+        "last_read" : {
+          "type" : "string"
+        },
+        "unread_count" : {
+          "type" : "number"
+        },
+        "unread_count_display" : {
+          "type" : "string"
+        },
+        "num_members" : {
+          "type" : "number"
+        },
+      }
+    }
+  }
 }

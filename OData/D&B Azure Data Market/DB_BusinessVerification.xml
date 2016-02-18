@@ -1,0 +1,47 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:dr="http://schemas.microsoft.com/dallas/2010/04" Version="1.0">
+<edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="1.0">
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/08/edm" Namespace="DnB" Alias="DnB">
+<EntityContainer Name="DnContainer">
+<EntitySet Name="CleanseMatchByNameAddressEntitySet" EntityType="DnB.CleanseMatchByNameAddressEntity"/>
+<FunctionImport Name="CompanyMatchByNameAddress" EntitySet="CleanseMatchByNameAddressEntitySet" ReturnType="Collection(DnB.CleanseMatchByNameAddressEntity)" dr:QueryResourceCost="1">
+<Parameter Name="Name" Nullable="false" Mode="In" Type="Edm.String" dr:Description="Business Name Or Executive Name" dr:SampleValues="Dell Inc."/>
+<Parameter Name="StreetAddress" Nullable="true" Mode="In" Type="Edm.String" dr:Description="Business Street Address" dr:SampleValues="1 Dell Way"/>
+<Parameter Name="City" Nullable="true" Mode="In" Type="Edm.String" dr:Description="City" dr:SampleValues="Round Rock"/>
+<Parameter Name="State" Nullable="true" Mode="In" Type="Edm.String" dr:Description="State" dr:SampleValues="TX"/>
+<Parameter Name="PostalCode" Nullable="true" Mode="In" Type="Edm.String" dr:Description="PostalCode" dr:SampleValues="78682"/>
+<Parameter Name="CountryCode" Nullable="false" Mode="In" Type="Edm.String" dr:Description="Country Code" dr:Enum="US|AD|AE|AF|AG|AI|AL|AM|AO|AR|AS|AT|AU|AW|AZ|BA|BB|BD|BE|BF|BG|BH|BI|BJ|BM|BN|BO|BR|BS|BT|BW|BY|BZ|CA|CD|CF|CG|CH|CI|CK|CL|CM|CN|CO|CR|CU|CV|CX|CY|CZ|DE|DJ|DK|DM|DO|DZ|EC|EE|EG|ER|ES|ET|FI|FJ|FK|FM|FO|FR|GA|GB|GD|GE|GF|GH|GI|GL|GM|GN|GP|GQ|GR|GS|GT|GU|GW|GY|HK|HN|HR|HT|HU|ID|IE|IL|IN|IQ|IR|IS|IT|JM|JO|JP|KE|KG|KH|KI|KM|KN|KP|KR|KW|KY|KZ|LA|LB|LC|LI|LK|LR|LS|LT|LU|LV|LY|MA|MC|MD|ME|MG|MH|MK|ML|MM|MN|MO|MP|MQ|MR|MS|MT|MU|MV|MW|MX|MY|MZ|NA|NC|NE|NF|NG|NI|NL|NO|NP|NR|NU|NZ|OM|PA|PE|PF|PG|PH|PK|PL|PM|PR|PT|PW|PY|QA|RE|RO|RS|RU|RW|SA|SB|SC|SD|SE|SG|SH|SI|SK|SL|SM|SN|SO|SR|ST|SV|SY|SZ|TC|TD|TG|TH|TJ|TK|TL|TM|TN|TO|TR|TT|TV|TW|TZ|UA|UG|UM|UY|UZ|VA|VC|VE|VG|VI|VN|VU|WF|WS|YE|YT|ZA|ZM|ZW|CS|AN" dr:SampleValues="US"/>
+<Parameter Name="PhoneNumber" Nullable="true" Mode="In" Type="Edm.String" dr:Description="PhoneNumber" dr:SampleValues="5123384400"/>
+<Parameter Name="MinimumConfidence" Nullable="true" Mode="In" Type="Edm.String" dr:Description="ConfidenceThreshold - Should be 4 or above" dr:SampleValues="8" dr:Enum="4|5|6|7|8|9|10"/>
+</FunctionImport>
+<FunctionImport Name="CompanyMatchByNameAddress" EntitySet="CleanseMatchByNameAddressEntitySet" ReturnType="DnB.CleanseMatchByNameAddressEntity" dr:QueryResourceCost="1">
+<Parameter Name="Name" Nullable="false" Mode="In" Type="Edm.String" dr:Description="Business Name Or Executive Name" dr:SampleValues="Dell Inc."/>
+<Parameter Name="StreetAddress" Nullable="true" Mode="In" Type="Edm.String" dr:Description="Business Street Address" dr:SampleValues="1 Dell Way"/>
+<Parameter Name="City" Nullable="true" Mode="In" Type="Edm.String" dr:Description="City" dr:SampleValues="Round Rock"/>
+<Parameter Name="State" Nullable="true" Mode="In" Type="Edm.String" dr:Description="State" dr:SampleValues="TX"/>
+<Parameter Name="PostalCode" Nullable="true" Mode="In" Type="Edm.String" dr:Description="PostalCode" dr:SampleValues="78682"/>
+<Parameter Name="CountryCode" Nullable="false" Mode="In" Type="Edm.String" dr:Description="Country Code" dr:Enum="US|AD|AE|AF|AG|AI|AL|AM|AO|AR|AS|AT|AU|AW|AZ|BA|BB|BD|BE|BF|BG|BH|BI|BJ|BM|BN|BO|BR|BS|BT|BW|BY|BZ|CA|CD|CF|CG|CH|CI|CK|CL|CM|CN|CO|CR|CU|CV|CX|CY|CZ|DE|DJ|DK|DM|DO|DZ|EC|EE|EG|ER|ES|ET|FI|FJ|FK|FM|FO|FR|GA|GB|GD|GE|GF|GH|GI|GL|GM|GN|GP|GQ|GR|GS|GT|GU|GW|GY|HK|HN|HR|HT|HU|ID|IE|IL|IN|IQ|IR|IS|IT|JM|JO|JP|KE|KG|KH|KI|KM|KN|KP|KR|KW|KY|KZ|LA|LB|LC|LI|LK|LR|LS|LT|LU|LV|LY|MA|MC|MD|ME|MG|MH|MK|ML|MM|MN|MO|MP|MQ|MR|MS|MT|MU|MV|MW|MX|MY|MZ|NA|NC|NE|NF|NG|NI|NL|NO|NP|NR|NU|NZ|OM|PA|PE|PF|PG|PH|PK|PL|PM|PR|PT|PW|PY|QA|RE|RO|RS|RU|RW|SA|SB|SC|SD|SE|SG|SH|SI|SK|SL|SM|SN|SO|SR|ST|SV|SY|SZ|TC|TD|TG|TH|TJ|TK|TL|TM|TN|TO|TR|TT|TV|TW|TZ|UA|UG|UM|UY|UZ|VA|VC|VE|VG|VI|VN|VU|WF|WS|YE|YT|ZA|ZM|ZW|CS|AN" dr:SampleValues="US"/>
+<Parameter Name="PhoneNumber" Nullable="true" Mode="In" Type="Edm.String" dr:Description="PhoneNumber" dr:SampleValues="5123384400"/>
+<Parameter Name="MinimumConfidence" Nullable="true" Mode="In" Type="Edm.String" dr:Description="ConfidenceThreshold - Should be 4 or above" dr:SampleValues="8" dr:Enum="4|5|6|7|8|9|10"/>
+</FunctionImport>
+</EntityContainer>
+<EntityType Name="CleanseMatchByNameAddressEntity">
+<Key>
+<PropertyRef Name="DUNSNumber"/>
+</Key>
+<Property Name="DUNSNumber" Type="Edm.String" Nullable="false" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Company" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Address" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="City" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="State" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="ZipCode" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="CountryISOCode" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Phone" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="ConfidenceCode" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="MatchGrade" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="TransactionFlag" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="TransactionStatus" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="TransactionStatusCode" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+</EntityType>
+</Schema>
+</edmx:DataServices>
+</edmx:Edmx>

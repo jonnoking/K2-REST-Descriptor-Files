@@ -1,0 +1,35 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:dr="http://schemas.microsoft.com/dallas/2010/04" Version="1.0">
+<edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="1.0">
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/08/edm" Namespace="DnB" Alias="DnB">
+<EntityContainer Name="DnContainer">
+<EntitySet Name="CABasicEntitySet" EntityType="DnB.CABasicEntity"/>
+<FunctionImport Name="ReturnData" EntitySet="CABasicEntitySet" ReturnType="Collection(DnB.CABasicEntity)" dr:QueryResourceCost="1">
+<Parameter Name="DUNSNumber" Nullable="false" Mode="In" Type="Edm.String" dr:Description="Unique nine digit business identification number" dr:SampleValues="114315195"/>
+</FunctionImport>
+<FunctionImport Name="ReturnData" EntitySet="CABasicEntitySet" ReturnType="DnB.CABasicEntity" dr:QueryResourceCost="1">
+<Parameter Name="DUNSNumber" Nullable="false" Mode="In" Type="Edm.String" dr:Description="Unique nine digit business identification number" dr:SampleValues="114315195"/>
+</FunctionImport>
+</EntityContainer>
+<EntityType Name="CABasicEntity">
+<Key>
+<PropertyRef Name="DUNSNumber"/>
+</Key>
+<Property Name="DUNSNumber" Type="Edm.String" Nullable="false" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Company" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Address" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="City" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="State" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Country" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="StateAbbrv" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="CountryISOCode" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="ZipCode" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Phone" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="InternationalDialingCode" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Fax" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="TransactionFlag" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="TransactionStatus" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="TransactionStatusCode" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+</EntityType>
+</Schema>
+</edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,235 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:dr="http://schemas.microsoft.com/dallas/2010/04" Version="1.0">
+<edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="1.0">
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/08/edm" Namespace="DnB" Alias="DnB">
+<EntityContainer Name="DnContainer">
+<EntitySet Name="LookupByDunsEntitySet" EntityType="DnB.LookupByDunsEntity"/>
+<FunctionImport Name="LookupByDuns" EntitySet="LookupByDunsEntitySet" ReturnType="Collection(DnB.LookupByDunsEntity)" dr:QueryResourceCost="1">
+<Parameter Name="DUNSNumber" Nullable="false" Mode="In" Type="Edm.String" dr:Description="Unique nine digit business identification number" dr:SampleValues="114315195"/>
+</FunctionImport>
+<FunctionImport Name="LookupByDuns" EntitySet="LookupByDunsEntitySet" ReturnType="DnB.LookupByDunsEntity" dr:QueryResourceCost="1">
+<Parameter Name="DUNSNumber" Nullable="false" Mode="In" Type="Edm.String" dr:Description="Unique nine digit business identification number" dr:SampleValues="114315195"/>
+</FunctionImport>
+<EntitySet Name="LookupByCompanyNameEntitySet" EntityType="DnB.LookupByCompanyNameEntity"/>
+<FunctionImport Name="LookupByCompanyName" EntitySet="LookupByCompanyNameEntitySet" ReturnType="Collection(DnB.LookupByCompanyNameEntity)" dr:QueryResourceCost="1">
+<Parameter Name="Company" Nullable="false" Mode="In" Type="Edm.String" dr:Description="Business Name" dr:SampleValues="Dell"/>
+<Parameter Name="City" Nullable="true" Mode="In" Type="Edm.String" dr:Description="City" dr:SampleValues="Round Rock"/>
+<Parameter Name="ZipCode" Nullable="true" Mode="In" Type="Edm.String" dr:Description="Postal Code" dr:SampleValues="78682"/>
+<Parameter Name="State" Nullable="true" Mode="In" Type="Edm.String" dr:Description="State or Province" dr:SampleValues="TX"/>
+<Parameter Name="Country" Nullable="true" Mode="In" Type="Edm.String" dr:Description="Country Code" dr:Enum="US|AD|AE|AF|AG|AI|AL|AM|AO|AR|AS|AT|AU|AW|AZ|BA|BB|BD|BE|BF|BG|BH|BI|BJ|BM|BN|BO|BR|BS|BT|BW|BY|BZ|CA|CD|CF|CG|CH|CI|CK|CL|CM|CN|CO|CR|CU|CV|CX|CY|CZ|DE|DJ|DK|DM|DO|DZ|EC|EE|EG|ER|ES|ET|FI|FJ|FK|FM|FO|FR|GA|GB|GD|GE|GF|GH|GI|GL|GM|GN|GP|GQ|GR|GS|GT|GU|GW|GY|HK|HN|HR|HT|HU|ID|IE|IL|IN|IQ|IR|IS|IT|JM|JO|JP|KE|KG|KH|KI|KM|KN|KP|KR|KW|KY|KZ|LA|LB|LC|LI|LK|LR|LS|LT|LU|LV|LY|MA|MC|MD|ME|MG|MH|MK|ML|MM|MN|MO|MP|MQ|MR|MS|MT|MU|MV|MW|MX|MY|MZ|NA|NC|NE|NF|NG|NI|NL|NO|NP|NR|NU|NZ|OM|PA|PE|PF|PG|PH|PK|PL|PM|PR|PT|PW|PY|QA|RE|RO|RS|RU|RW|SA|SB|SC|SD|SE|SG|SH|SI|SK|SL|SM|SN|SO|SR|ST|SV|SY|SZ|TC|TD|TG|TH|TJ|TK|TL|TM|TN|TO|TR|TT|TV|TW|TZ|UA|UG|UM|UY|UZ|VA|VC|VE|VG|VI|VN|VU|WF|WS|YE|YT|ZA|ZM|ZW|CS|AN" dr:SampleValues="US"/>
+<Parameter Name="RecordsToBeReturned" Nullable="false" Mode="In" Type="Edm.Int16" dr:Description="Total number of companies returned by the query" dr:SampleValues="1000"/>
+</FunctionImport>
+<FunctionImport Name="LookupByCompanyName" EntitySet="LookupByCompanyNameEntitySet" ReturnType="DnB.LookupByCompanyNameEntity" dr:QueryResourceCost="1">
+<Parameter Name="Company" Nullable="false" Mode="In" Type="Edm.String" dr:Description="Business Name" dr:SampleValues="Dell"/>
+<Parameter Name="City" Nullable="true" Mode="In" Type="Edm.String" dr:Description="City" dr:SampleValues="Round Rock"/>
+<Parameter Name="ZipCode" Nullable="true" Mode="In" Type="Edm.String" dr:Description="Postal Code" dr:SampleValues="78682"/>
+<Parameter Name="State" Nullable="true" Mode="In" Type="Edm.String" dr:Description="State or Province" dr:SampleValues="TX"/>
+<Parameter Name="Country" Nullable="true" Mode="In" Type="Edm.String" dr:Description="Country Code" dr:Enum="US|AD|AE|AF|AG|AI|AL|AM|AO|AR|AS|AT|AU|AW|AZ|BA|BB|BD|BE|BF|BG|BH|BI|BJ|BM|BN|BO|BR|BS|BT|BW|BY|BZ|CA|CD|CF|CG|CH|CI|CK|CL|CM|CN|CO|CR|CU|CV|CX|CY|CZ|DE|DJ|DK|DM|DO|DZ|EC|EE|EG|ER|ES|ET|FI|FJ|FK|FM|FO|FR|GA|GB|GD|GE|GF|GH|GI|GL|GM|GN|GP|GQ|GR|GS|GT|GU|GW|GY|HK|HN|HR|HT|HU|ID|IE|IL|IN|IQ|IR|IS|IT|JM|JO|JP|KE|KG|KH|KI|KM|KN|KP|KR|KW|KY|KZ|LA|LB|LC|LI|LK|LR|LS|LT|LU|LV|LY|MA|MC|MD|ME|MG|MH|MK|ML|MM|MN|MO|MP|MQ|MR|MS|MT|MU|MV|MW|MX|MY|MZ|NA|NC|NE|NF|NG|NI|NL|NO|NP|NR|NU|NZ|OM|PA|PE|PF|PG|PH|PK|PL|PM|PR|PT|PW|PY|QA|RE|RO|RS|RU|RW|SA|SB|SC|SD|SE|SG|SH|SI|SK|SL|SM|SN|SO|SR|ST|SV|SY|SZ|TC|TD|TG|TH|TJ|TK|TL|TM|TN|TO|TR|TT|TV|TW|TZ|UA|UG|UM|UY|UZ|VA|VC|VE|VG|VI|VN|VU|WF|WS|YE|YT|ZA|ZM|ZW|CS|AN" dr:SampleValues="US"/>
+<Parameter Name="RecordsToBeReturned" Nullable="false" Mode="In" Type="Edm.Int16" dr:Description="Total number of companies returned by the query" dr:SampleValues="1000"/>
+</FunctionImport>
+<EntitySet Name="SearchByLocationEntitySet" EntityType="DnB.SearchByLocationEntity"/>
+<FunctionImport Name="SearchByLocation" EntitySet="SearchByLocationEntitySet" ReturnType="Collection(DnB.SearchByLocationEntity)" dr:QueryResourceCost="1">
+<Parameter Name="City" Nullable="true" Mode="In" Type="Edm.String" dr:Description="City" dr:SampleValues="Round Rock"/>
+<Parameter Name="State" Nullable="true" Mode="In" Type="Edm.String" dr:Description="State" dr:SampleValues="TX"/>
+<Parameter Name="ZipCode" Nullable="true" Mode="In" Type="Edm.String" dr:Description="Zip" dr:SampleValues="78682"/>
+<Parameter Name="Country" Nullable="false" Mode="In" Type="Edm.String" dr:Description="Country Code" dr:Enum="US|AD|AE|AF|AG|AI|AL|AM|AO|AR|AS|AT|AU|AW|AZ|BA|BB|BD|BE|BF|BG|BH|BI|BJ|BM|BN|BO|BR|BS|BT|BW|BY|BZ|CA|CD|CF|CG|CH|CI|CK|CL|CM|CN|CO|CR|CU|CV|CX|CY|CZ|DE|DJ|DK|DM|DO|DZ|EC|EE|EG|ER|ES|ET|FI|FJ|FK|FM|FO|FR|GA|GB|GD|GE|GF|GH|GI|GL|GM|GN|GP|GQ|GR|GS|GT|GU|GW|GY|HK|HN|HR|HT|HU|ID|IE|IL|IN|IQ|IR|IS|IT|JM|JO|JP|KE|KG|KH|KI|KM|KN|KP|KR|KW|KY|KZ|LA|LB|LC|LI|LK|LR|LS|LT|LU|LV|LY|MA|MC|MD|ME|MG|MH|MK|ML|MM|MN|MO|MP|MQ|MR|MS|MT|MU|MV|MW|MX|MY|MZ|NA|NC|NE|NF|NG|NI|NL|NO|NP|NR|NU|NZ|OM|PA|PE|PF|PG|PH|PK|PL|PM|PR|PT|PW|PY|QA|RE|RO|RS|RU|RW|SA|SB|SC|SD|SE|SG|SH|SI|SK|SL|SM|SN|SO|SR|ST|SV|SY|SZ|TC|TD|TG|TH|TJ|TK|TL|TM|TN|TO|TR|TT|TV|TW|TZ|UA|UG|UM|UY|UZ|VA|VC|VE|VG|VI|VN|VU|WF|WS|YE|YT|ZA|ZM|ZW|CS|AN" dr:SampleValues="US"/>
+<Parameter Name="RecordsToBeReturned" Nullable="false" Mode="In" Type="Edm.Int16" dr:Description="Total number of companies returned by the query" dr:SampleValues="1000"/>
+</FunctionImport>
+<EntitySet Name="SearchByRadiusEntitySet" EntityType="DnB.SearchByRadiusEntity"/>
+<FunctionImport Name="SearchByRadius" EntitySet="SearchByRadiusEntitySet" ReturnType="Collection(DnB.SearchByRadiusEntity)" dr:QueryResourceCost="1">
+<Parameter Name="RadiusSearchCountryCode" Nullable="false" Mode="In" Type="Edm.String" dr:Description="Country Code" dr:Enum="US|AD|AE|AF|AG|AI|AL|AM|AO|AR|AS|AT|AU|AW|AZ|BA|BB|BD|BE|BF|BG|BH|BI|BJ|BM|BN|BO|BR|BS|BT|BW|BY|BZ|CA|CD|CF|CG|CH|CI|CK|CL|CM|CN|CO|CR|CU|CV|CX|CY|CZ|DE|DJ|DK|DM|DO|DZ|EC|EE|EG|ER|ES|ET|FI|FJ|FK|FM|FO|FR|GA|GB|GD|GE|GF|GH|GI|GL|GM|GN|GP|GQ|GR|GS|GT|GU|GW|GY|HK|HN|HR|HT|HU|ID|IE|IL|IN|IQ|IR|IS|IT|JM|JO|JP|KE|KG|KH|KI|KM|KN|KP|KR|KW|KY|KZ|LA|LB|LC|LI|LK|LR|LS|LT|LU|LV|LY|MA|MC|MD|ME|MG|MH|MK|ML|MM|MN|MO|MP|MQ|MR|MS|MT|MU|MV|MW|MX|MY|MZ|NA|NC|NE|NF|NG|NI|NL|NO|NP|NR|NU|NZ|OM|PA|PE|PF|PG|PH|PK|PL|PM|PR|PT|PW|PY|QA|RE|RO|RS|RU|RW|SA|SB|SC|SD|SE|SG|SH|SI|SK|SL|SM|SN|SO|SR|ST|SV|SY|SZ|TC|TD|TG|TH|TJ|TK|TL|TM|TN|TO|TR|TT|TV|TW|TZ|UA|UG|UM|UY|UZ|VA|VC|VE|VG|VI|VN|VU|WF|WS|YE|YT|ZA|ZM|ZW|CS|AN" dr:SampleValues="US"/>
+<Parameter Name="RadiusSearchZip" Nullable="false" Mode="In" Type="Edm.String" dr:Description="Zip Code for Radius Search" dr:SampleValues="78727 "/>
+<Parameter Name="RadiusMeasurement" Nullable="false" Mode="In" Type="Edm.Int64" dr:Description="Radius in Miles" dr:SampleValues="1"/>
+<Parameter Name="RecordsToBeReturned" Nullable="false" Mode="In" Type="Edm.Int16" dr:Description="Total number of companies returned by the query" dr:SampleValues="1000"/>
+</FunctionImport>
+<EntitySet Name="SearchByLatLongEntitySet" EntityType="DnB.SearchByLatLongEntity"/>
+<FunctionImport Name="SearchByLatLong" EntitySet="SearchByLatLongEntitySet" ReturnType="Collection(DnB.SearchByLatLongEntity)" dr:QueryResourceCost="1">
+<Parameter Name="Latitude" Nullable="false" Mode="In" Type="Edm.Double" dr:Description="Latitude" dr:SampleValues="47.42"/>
+<Parameter Name="Longitude" Nullable="false" Mode="In" Type="Edm.Double" dr:Description="Longitude" dr:SampleValues="-122.29"/>
+<Parameter Name="RadiusMeasurement" Nullable="false" Mode="In" Type="Edm.Int64" dr:Description="Radius in Miles" dr:SampleValues="1"/>
+<Parameter Name="RecordsToBeReturned" Nullable="false" Mode="In" Type="Edm.Int16" dr:Description="Total number of companies returned by the query" dr:SampleValues="1000"/>
+</FunctionImport>
+<EntitySet Name="SearchByDiversityInformationEntitySet" EntityType="DnB.SearchByDiversityInformationEntity"/>
+<FunctionImport Name="SearchByDiversityInformation" EntitySet="SearchByDiversityInformationEntitySet" ReturnType="Collection(DnB.SearchByDiversityInformationEntity)" dr:QueryResourceCost="1">
+<Parameter Name="City" Nullable="true" Mode="In" Type="Edm.String" dr:Description="City" dr:SampleValues="Austin"/>
+<Parameter Name="State" Nullable="true" Mode="In" Type="Edm.String" dr:Description="State" dr:SampleValues="TX"/>
+<Parameter Name="Country" Nullable="true" Mode="In" Type="Edm.String" dr:Description="Country Code" dr:Enum="US|AD|AE|AF|AG|AI|AL|AM|AO|AR|AS|AT|AU|AW|AZ|BA|BB|BD|BE|BF|BG|BH|BI|BJ|BM|BN|BO|BR|BS|BT|BW|BY|BZ|CA|CD|CF|CG|CH|CI|CK|CL|CM|CN|CO|CR|CU|CV|CX|CY|CZ|DE|DJ|DK|DM|DO|DZ|EC|EE|EG|ER|ES|ET|FI|FJ|FK|FM|FO|FR|GA|GB|GD|GE|GF|GH|GI|GL|GM|GN|GP|GQ|GR|GS|GT|GU|GW|GY|HK|HN|HR|HT|HU|ID|IE|IL|IN|IQ|IR|IS|IT|JM|JO|JP|KE|KG|KH|KI|KM|KN|KP|KR|KW|KY|KZ|LA|LB|LC|LI|LK|LR|LS|LT|LU|LV|LY|MA|MC|MD|ME|MG|MH|MK|ML|MM|MN|MO|MP|MQ|MR|MS|MT|MU|MV|MW|MX|MY|MZ|NA|NC|NE|NF|NG|NI|NL|NO|NP|NR|NU|NZ|OM|PA|PE|PF|PG|PH|PK|PL|PM|PR|PT|PW|PY|QA|RE|RO|RS|RU|RW|SA|SB|SC|SD|SE|SG|SH|SI|SK|SL|SM|SN|SO|SR|ST|SV|SY|SZ|TC|TD|TG|TH|TJ|TK|TL|TM|TN|TO|TR|TT|TV|TW|TZ|UA|UG|UM|UY|UZ|VA|VC|VE|VG|VI|VN|VU|WF|WS|YE|YT|ZA|ZM|ZW|CS|AN" dr:SampleValues="US"/>
+<Parameter Name="MinorityOwnedBoolean" Nullable="true" Mode="In" Type="Edm.Boolean" dr:Description="Set to True for Minority-Owned companies" dr:Enum="true|false" dr:SampleValues="true"/>
+<Parameter Name="FemaleOwnedBoolean" Nullable="true" Mode="In" Type="Edm.Boolean" dr:Description="Set to True for Female-Owned companies" dr:Enum="true|false" dr:SampleValues="true"/>
+<Parameter Name="RecordsToBeReturned" Nullable="false" Mode="In" Type="Edm.Int16" dr:Description="Total number of companies returned by the query" dr:SampleValues="1000"/>
+</FunctionImport>
+<EntitySet Name="SearchByIndustryEntitySet" EntityType="DnB.SearchByIndustryEntity"/>
+<FunctionImport Name="SearchByIndustry" EntitySet="SearchByIndustryEntitySet" ReturnType="Collection(DnB.SearchByIndustryEntity)" dr:QueryResourceCost="1">
+<Parameter Name="City" Nullable="true" Mode="In" Type="Edm.String" dr:Description="City" dr:SampleValues="Round Rock"/>
+<Parameter Name="State" Nullable="true" Mode="In" Type="Edm.String" dr:Description="State" dr:SampleValues="TX"/>
+<Parameter Name="IndustryCode" Nullable="false" Mode="In" Type="Edm.String" dr:Description="Industry Code" dr:SampleValues="60210000"/>
+<Parameter Name="RecordsToBeReturned" Nullable="false" Mode="In" Type="Edm.Int16" dr:Description="Total number of companies returned by the query" dr:SampleValues="1000"/>
+</FunctionImport>
+<EntitySet Name="SearchByCompanySizeEntitySet" EntityType="DnB.SearchByCompanySizeEntity"/>
+<FunctionImport Name="SearchByCompanySize" EntitySet="SearchByCompanySizeEntitySet" ReturnType="Collection(DnB.SearchByCompanySizeEntity)" dr:QueryResourceCost="1">
+<Parameter Name="City" Nullable="true" Mode="In" Type="Edm.String" dr:Description="City" dr:SampleValues="Round Rock"/>
+<Parameter Name="State" Nullable="false" Mode="In" Type="Edm.String" dr:Description="State" dr:SampleValues="TX"/>
+<Parameter Name="Country" Nullable="false" Mode="In" Type="Edm.String" dr:Description="Country Code" dr:Enum="US|AD|AE|AF|AG|AI|AL|AM|AO|AR|AS|AT|AU|AW|AZ|BA|BB|BD|BE|BF|BG|BH|BI|BJ|BM|BN|BO|BR|BS|BT|BW|BY|BZ|CA|CD|CF|CG|CH|CI|CK|CL|CM|CN|CO|CR|CU|CV|CX|CY|CZ|DE|DJ|DK|DM|DO|DZ|EC|EE|EG|ER|ES|ET|FI|FJ|FK|FM|FO|FR|GA|GB|GD|GE|GF|GH|GI|GL|GM|GN|GP|GQ|GR|GS|GT|GU|GW|GY|HK|HN|HR|HT|HU|ID|IE|IL|IN|IQ|IR|IS|IT|JM|JO|JP|KE|KG|KH|KI|KM|KN|KP|KR|KW|KY|KZ|LA|LB|LC|LI|LK|LR|LS|LT|LU|LV|LY|MA|MC|MD|ME|MG|MH|MK|ML|MM|MN|MO|MP|MQ|MR|MS|MT|MU|MV|MW|MX|MY|MZ|NA|NC|NE|NF|NG|NI|NL|NO|NP|NR|NU|NZ|OM|PA|PE|PF|PG|PH|PK|PL|PM|PR|PT|PW|PY|QA|RE|RO|RS|RU|RW|SA|SB|SC|SD|SE|SG|SH|SI|SK|SL|SM|SN|SO|SR|ST|SV|SY|SZ|TC|TD|TG|TH|TJ|TK|TL|TM|TN|TO|TR|TT|TV|TW|TZ|UA|UG|UM|UY|UZ|VA|VC|VE|VG|VI|VN|VU|WF|WS|YE|YT|ZA|ZM|ZW|CS|AN" dr:SampleValues="US"/>
+<Parameter Name="SalesFrom" Nullable="false" Mode="In" Type="Edm.Int64" dr:Description="Low Range for Sales" dr:SampleValues="1"/>
+<Parameter Name="SalesTo" Nullable="false" Mode="In" Type="Edm.Int64" dr:Description="High Range for Sales" dr:SampleValues="50000"/>
+<Parameter Name="NetIncomeFrom" Nullable="true" Mode="In" Type="Edm.Int64" dr:Description="Low Range for Net Income" dr:SampleValues="1"/>
+<Parameter Name="NetIncomeTo" Nullable="true" Mode="In" Type="Edm.Int64" dr:Description="High Range for Net Income" dr:SampleValues="50000"/>
+<Parameter Name="CurrencyCode" Nullable="true" Mode="In" Type="Edm.String" dr:Description="3 Character Currency Code" dr:SampleValues="USD" dr:Enum="USD|CAD"/>
+<Parameter Name="SiteEmployeesFrom" Nullable="true" Mode="In" Type="Edm.Int32" dr:Description="Low Range for number of employees at a location" dr:SampleValues="1"/>
+<Parameter Name="SiteEmployeesTo" Nullable="true" Mode="In" Type="Edm.Int32" dr:Description="High Range for number of employees at a location" dr:SampleValues="1000000"/>
+<Parameter Name="TotalEmployeesFrom" Nullable="false" Mode="In" Type="Edm.Int32" dr:Description="Low Range for total number of employees for the company" dr:SampleValues="1"/>
+<Parameter Name="TotalEmployeesTo" Nullable="false" Mode="In" Type="Edm.Int32" dr:Description="High Range for total number of employees for the company" dr:SampleValues="1000000"/>
+<Parameter Name="RecordsToBeReturned" Nullable="false" Mode="In" Type="Edm.Int16" dr:Description="Total number of companies returned by the query" dr:SampleValues="1000"/>
+</FunctionImport>
+<EntitySet Name="CompositeSearchEntitySet" EntityType="DnB.CompositeSearchEntity"/>
+<FunctionImport Name="CompositeSearch" EntitySet="CompositeSearchEntitySet" ReturnType="Collection(DnB.CompositeSearchEntity)" dr:QueryResourceCost="1">
+<Parameter Name="DUNSNumber" Nullable="true" Mode="In" Type="Edm.String" dr:Description="Unique nine digit business identification number" dr:SampleValues="081466849"/>
+<Parameter Name="Company" Nullable="true" Mode="In" Type="Edm.String" dr:Description="Business Name" dr:SampleValues="Microsoft"/>
+<Parameter Name="City" Nullable="true" Mode="In" Type="Edm.String" dr:Description="City" dr:SampleValues="Redmond"/>
+<Parameter Name="State" Nullable="true" Mode="In" Type="Edm.String" dr:Description="State or Province" dr:SampleValues="WA"/>
+<Parameter Name="Zip" Nullable="true" Mode="In" Type="Edm.String" dr:Description="Zip" dr:SampleValues="98052"/>
+<Parameter Name="Country" Nullable="false" Mode="In" Type="Edm.String" dr:Description="Country Code" dr:Enum="US|AD|AE|AF|AG|AI|AL|AM|AO|AR|AS|AT|AU|AW|AZ|BA|BB|BD|BE|BF|BG|BH|BI|BJ|BM|BN|BO|BR|BS|BT|BW|BY|BZ|CA|CD|CF|CG|CH|CI|CK|CL|CM|CN|CO|CR|CU|CV|CX|CY|CZ|DE|DJ|DK|DM|DO|DZ|EC|EE|EG|ER|ES|ET|FI|FJ|FK|FM|FO|FR|GA|GB|GD|GE|GF|GH|GI|GL|GM|GN|GP|GQ|GR|GS|GT|GU|GW|GY|HK|HN|HR|HT|HU|ID|IE|IL|IN|IQ|IR|IS|IT|JM|JO|JP|KE|KG|KH|KI|KM|KN|KP|KR|KW|KY|KZ|LA|LB|LC|LI|LK|LR|LS|LT|LU|LV|LY|MA|MC|MD|ME|MG|MH|MK|ML|MM|MN|MO|MP|MQ|MR|MS|MT|MU|MV|MW|MX|MY|MZ|NA|NC|NE|NF|NG|NI|NL|NO|NP|NR|NU|NZ|OM|PA|PE|PF|PG|PH|PK|PL|PM|PR|PT|PW|PY|QA|RE|RO|RS|RU|RW|SA|SB|SC|SD|SE|SG|SH|SI|SK|SL|SM|SN|SO|SR|ST|SV|SY|SZ|TC|TD|TG|TH|TJ|TK|TL|TM|TN|TO|TR|TT|TV|TW|TZ|UA|UG|UM|UY|UZ|VA|VC|VE|VG|VI|VN|VU|WF|WS|YE|YT|ZA|ZM|ZW|CS|AN" dr:SampleValues="US"/>
+<Parameter Name="IndustryCodeType" Nullable="true" Mode="In" Type="Edm.String" dr:Description="700 is NAICS and 3599 is SIC" dr:Enum="3599|700" dr:SampleValues="3599"/>
+<Parameter Name="IndustryCode" Nullable="true" Mode="In" Type="Edm.String" dr:Description="Industry Code" dr:SampleValues="73720000"/>
+<Parameter Name="SalesFrom" Nullable="true" Mode="In" Type="Edm.Int64" dr:Description="Low Range for Sales" dr:SampleValues="20000"/>
+<Parameter Name="SalesTo" Nullable="true" Mode="In" Type="Edm.Int64" dr:Description="High Range for Sales" dr:SampleValues="80000"/>
+<Parameter Name="NetIncomeFrom" Nullable="true" Mode="In" Type="Edm.Int64" dr:Description="Low Range for Net Income" dr:SampleValues="20000"/>
+<Parameter Name="NetIncomeTo" Nullable="true" Mode="In" Type="Edm.Int64" dr:Description="High Range for Net Income" dr:SampleValues="80000"/>
+<Parameter Name="CurrencyCode" Nullable="true" Mode="In" Type="Edm.String" dr:Description="3 Character Currency Code" dr:SampleValues="USD" dr:Enum="USD|CAD"/>
+<Parameter Name="SiteEmployeesFrom" Nullable="true" Mode="In" Type="Edm.Int32" dr:Description="Low Range for number of employees at a location" dr:SampleValues="20000"/>
+<Parameter Name="SiteEmployeesTo" Nullable="true" Mode="In" Type="Edm.Int32" dr:Description="High Range for number of employees at a location" dr:SampleValues="99999"/>
+<Parameter Name="TotalEmployeesFrom" Nullable="true" Mode="In" Type="Edm.Int32" dr:Description="Low Range for total number of employees for the company" dr:SampleValues="20000"/>
+<Parameter Name="TotalEmployeesTo" Nullable="true" Mode="In" Type="Edm.Int32" dr:Description="High Range for total number of employees for the company" dr:SampleValues="99999"/>
+<Parameter Name="MinorityOwnedBoolean" Nullable="true" Mode="In" Type="Edm.Boolean" dr:Description="Set to True for Minority-Owned companies" dr:Enum="false|true" dr:SampleValues="false"/>
+<Parameter Name="FemaleOwnedBoolean" Nullable="true" Mode="In" Type="Edm.Boolean" dr:Description="Set to True for Female-Owned companies" dr:Enum="false|true" dr:SampleValues="false"/>
+<Parameter Name="RecordsToBeReturned" Nullable="true" Mode="In" Type="Edm.Int16" dr:Description="Total number of companies returned by the query" dr:SampleValues="1000"/>
+</FunctionImport>
+</EntityContainer>
+<EntityType Name="LookupByDunsEntity">
+<Key>
+<PropertyRef Name="Company"/>
+</Key>
+<Property Name="DUNSNumber" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Company" Type="Edm.String" Nullable="false" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Address" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="City" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="ZipCode" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="State" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Country" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Phone" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="LocationType" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+</EntityType>
+<EntityType Name="LookupByCompanyNameEntity">
+<Key>
+<PropertyRef Name="Company"/>
+</Key>
+<Property Name="DUNSNumber" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Company" Type="Edm.String" Nullable="false" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Address" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="City" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="ZipCode" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="State" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Country" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Phone" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="LocationType" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+</EntityType>
+<EntityType Name="SearchByLocationEntity">
+<Key>
+<PropertyRef Name="Company"/>
+</Key>
+<Property Name="DUNSNumber" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Company" Type="Edm.String" Nullable="false" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Address" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="City" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="ZipCode" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="State" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Country" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Phone" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="LocationType" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+</EntityType>
+<EntityType Name="SearchByRadiusEntity">
+<Key>
+<PropertyRef Name="Company"/>
+</Key>
+<Property Name="DUNSNumber" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Company" Type="Edm.String" Nullable="false" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Address" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="City" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="ZipCode" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="State" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Country" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Phone" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="LocationType" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+</EntityType>
+<EntityType Name="SearchByLatLongEntity">
+<Key>
+<PropertyRef Name="Company"/>
+</Key>
+<Property Name="DUNSNumber" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Company" Type="Edm.String" Nullable="false" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Address" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="City" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="ZipCode" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="State" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Country" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Phone" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="LocationType" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+</EntityType>
+<EntityType Name="SearchByDiversityInformationEntity">
+<Key>
+<PropertyRef Name="Company"/>
+</Key>
+<Property Name="DUNSNumber" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Company" Type="Edm.String" Nullable="false" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Address" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="City" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="ZipCode" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="State" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Country" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Phone" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="LocationType" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+</EntityType>
+<EntityType Name="SearchByIndustryEntity">
+<Key>
+<PropertyRef Name="Company"/>
+</Key>
+<Property Name="DUNSNumber" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Company" Type="Edm.String" Nullable="false" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Address" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="City" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="ZipCode" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="State" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Country" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Phone" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="LocationType" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+</EntityType>
+<EntityType Name="SearchByCompanySizeEntity">
+<Key>
+<PropertyRef Name="Company"/>
+</Key>
+<Property Name="DUNSNumber" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Company" Type="Edm.String" Nullable="false" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Address" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="City" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="ZipCode" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="State" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Country" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Phone" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="LocationType" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+</EntityType>
+<EntityType Name="CompositeSearchEntity">
+<Key>
+<PropertyRef Name="Company"/>
+</Key>
+<Property Name="DUNSNumber" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Company" Type="Edm.String" Nullable="false" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Address" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="City" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="ZipCode" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="State" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Country" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="Phone" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+<Property Name="LocationType" Type="Edm.String" dr:Queryable="false" dr:Returned="true"/>
+</EntityType>
+</Schema>
+</edmx:DataServices>
+</edmx:Edmx>

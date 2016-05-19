@@ -1,0 +1,756 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "v1",
+		"title": "Microsoft Graph - Example"
+	},
+	"host": "graph.microsoft.com",
+	"schemes": ["https"],
+	"paths": {
+		"/beta/me": {
+			"get": {
+				"tags": ["Me"],
+				"operationId": "Me",
+				"consumes": [],
+				"produces": ["text/json",
+				"application/json"],
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/GraphUser"
+						}
+					}
+				},
+				"deprecated": false
+			}
+		},
+		"/beta/users/{userid}": {
+			"get": {
+				"tags": ["LoadUser"],
+				"operationId": "LoadUser",
+				"consumes": [],
+				"produces": ["application/json"],
+				"parameters": [{
+					"name": "userid",
+					"in": "path",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/GraphUser"
+						}
+					}
+				}
+			}
+		},
+		"/beta/users": {
+			"get": {
+				"tags": ["ListUsers"],
+				"operationId": "ListUsers",
+				"consumes": [],
+				"produces": ["application/json"],
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/GraphUserArray"
+						}
+					}
+				}
+			}
+		},
+		"/beta/me/workingWith": {
+			"get": {
+				"tags": ["ListMeWorkingWith"],
+				"operationId": "ListMeWorkingWith",
+				"consumes": [],
+				"produces": ["application/json"],
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/GraphUserArray"
+						}
+					}
+				}
+			}
+		},
+		"/beta/me/trendingAround": {
+			"get": {
+				"tags": ["ListMeTrendingAround"],
+				"operationId": "ListMeTrendingAround",
+				"consumes": [],
+				"produces": ["application/json"],
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/GraphDriveItemArray"
+						}
+					}
+				}
+			}
+		},
+		"/beta/users/{userid}/trendingAround": {
+			"get": {
+				"tags": ["ListUserTrendingAround"],
+				"operationId": "ListUserTrendingAround",
+				"consumes": [],
+				"produces": ["application/json"],
+				"parameters": [{
+					"name": "userid",
+					"in": "path",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/GraphDriveItemArray"
+						}
+					}
+				}
+			}
+		},
+        "/beta/users/{userid}/workingWith": {
+			"get": {
+				"tags": ["ListUserWorkingWith"],
+				"operationId": "ListUserWorkingWith",
+				"consumes": [],
+				"produces": ["application/json"],
+				"parameters": [{
+					"name": "userid",
+					"in": "path",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/GraphUserArray"
+						}
+					}
+				}
+			}
+		},
+		"v1.0/groups/{groupid}/members": {
+			"get": {
+				"tags": ["ListGroupMembership"],
+				"operationId": "ListGroupMembership",
+				"consumes": [],
+				"produces": ["application/json"],
+				"parameters": [{
+					"name": "groupid",
+					"in": "path",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/GraphUserArray"
+						}
+					}
+				}
+			}
+		},
+		"v1.0/groups": {
+			"get": {
+				"tags": ["ListGroups"],
+				"operationId": "ListGroups",
+				"consumes": [],
+				"produces": ["application/json"],
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/GraphGroupArray"
+						}
+					}
+				}
+			}
+		},
+		"v1.0/groups/{groupid}": {
+			"get": {
+				"tags": ["LoadGroup"],
+				"operationId": "LoadGroup",
+				"consumes": [],
+				"produces": ["application/json"],
+				"parameters": [{
+					"name": "groupid",
+					"in": "path",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/GraphGroup"
+						}
+					}
+				}
+			}
+		},
+        "v1.0/users/{userid}/memberOf": {
+			"get": {
+				"tags": ["ListUserGroups"],
+				"operationId": "ListUserGroups",
+				"consumes": [],
+				"produces": ["application/json"],
+				"parameters": [{
+					"name": "userid",
+					"in": "path",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/GraphGroupArray"
+						}
+					}
+				}
+			}
+		},
+		"/beta/me/drive/root/children": {
+			"get": {
+				"tags": ["ListMeFiles"],
+				"operationId": "ListMeFiles",
+				"consumes": [],
+				"produces": ["application/json"],
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/GraphDriveItemArray"
+						}
+					}
+				}
+			}
+		},                		
+		"/beta/users/{userid}/drive/root/children": {
+			"get": {
+				"tags": ["ListUserFiles"],
+				"operationId": "ListUserFiles",
+				"consumes": [],
+				"produces": ["application/json"],
+				"parameters": [{
+					"name": "userid",
+					"in": "path",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/GraphDriveItemArray"
+						}
+					}
+				}
+			}
+		},                		
+		"/beta/me/people": {
+			"get": {
+				"tags": ["ListMePeople"],
+				"operationId": "ListMePeople",
+				"consumes": [],
+				"produces": ["application/json"],
+				"parameters": [],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/GraphPersonArray"
+						}
+					}
+				}
+			}
+		},                		
+		"/beta/me/people('{personid}')": {
+			"get": {
+				"tags": ["LoadMePerson"],
+				"operationId": "LoadMePerson",
+				"consumes": [],
+				"produces": ["application/json"],
+				"parameters": [{
+					"name": "personid",
+					"in": "path",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/GraphPerson"
+						}
+					}
+				}
+			}
+		},
+        "/beta/users/{userid}/people": {
+			"get": {
+				"tags": ["ListUserPeople"],
+				"operationId": "ListUserPeople",
+				"consumes": [],
+				"produces": ["application/json"],
+				"parameters": [{
+					"name": "userid",
+					"in": "path",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/GraphPersonArray"
+						}
+					}
+				}
+			}
+		},  
+        "/beta/users/{userid}/people('{personid}')": {
+			"get": {
+				"tags": ["LoadUserPerson"],
+				"operationId": "LoadUserPerson",
+				"consumes": [],
+				"produces": ["application/json"],
+				"parameters": [
+                    {
+                        "name": "userid",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "personid",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/GraphPerson"
+						}
+					}
+				}
+			}
+		}
+    },
+	"definitions": {
+		"Object": {
+			"type": "object",
+			"properties": {
+				
+			}
+		},
+		"GraphUser": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"accountEnabled": {
+					"type": "boolean"
+				},
+				"assignedLicenses-microsoft.graph.assignedLicense": {
+					"type": "array",
+                    "items":
+                    {
+                        "type": "string"
+                    }
+				},
+				"assignedPlans-microsoft.graph.assignedPlan": {
+					"type": "array",
+                    "items":
+                    {
+                        "type": "string"
+                    }
+				},
+				"businessPhones": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},                
+				"city": {
+					"type": "string"
+				},
+				"companyName": {
+					"type": "string"
+				},
+				"country": {
+					"type": "string"
+				},
+				"department": {
+					"type": "string"
+				},
+				"displayName": {
+					"type": "string"
+				},
+				"givenName": {
+					"type": "string"
+				},
+				"jobTitle": {
+					"type": "string"
+				},
+				"mail": {
+					"type": "string"
+				},
+				"mailNickname": {
+					"type": "string"
+				},
+				"mobilePhone": {
+					"type": "string"
+				},
+				"onPremisesImmutableId": {
+					"type": "string"
+				},
+				"onPremisesLastSyncDateTime": {
+					"type": "string"
+				},
+				"onPremisesSecurityIdentifier": {
+					"type": "string"
+				},
+				"onPremisesSyncEnabled": {
+					"type": "boolean"
+				},
+				"passwordPolicies": {
+					"type": "string"
+				},
+				"passwordProfile-microsoft.graph.passwordProfile": {
+					"type": "string"
+				},
+				"officeLocation": {
+					"type": "string"
+				},
+				"postalCode": {
+					"type": "string"
+				},
+				"preferredLanguage": {
+					"type": "string"
+				},
+				"provisionedPlans-microsoft.graph.provisionedPlan": {
+					"type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+				},
+				"proxyAddresses": {
+					"type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+				},
+				"state": {
+					"type": "string"
+				},
+				"streetAddress": {
+					"type": "string"
+				},
+				"surname": {
+					"type": "string"
+				},
+				"usageLocation": {
+					"type": "string"
+				},
+				"userPrincipalName": {
+					"type": "string"
+				},
+				"userType": {
+					"type": "string"
+				},
+				"aboutMe": {
+					"type": "string"
+				},
+				"birthday": {
+					"type": "string"
+				},
+				"hireDate": {
+					"type": "string"
+				},
+				"interests": {
+					"type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+				},
+				"mySite": {
+					"type": "string"
+				},
+				"pastProjects": {
+					"type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+				},
+				"preferredName": {
+					"type": "string"
+				},
+				"schools": {
+					"type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+				},
+				"skills": {
+					"type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+				},
+				"Email": {
+					"type": "string"
+				}
+			}
+		},
+		"GraphUserArray": {
+			"type": "object",
+			"properties": {
+				"value": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/GraphUser"
+					}
+				}
+			}
+		},		
+		"GraphGroup": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"createdDateTime": {
+					"type": "string"
+				},
+				"description": {
+					"type": "string"
+				},
+				"displayName": {
+					"type": "string"
+				},
+				"groupTypes": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"mail": {
+					"type": "string"
+				},
+				"mailEnabled": {
+					"type": "boolean"
+				},
+				"mailNickname": {
+					"type": "string"
+				},
+				"onPremisesLastSyncDateTime": {
+					"type": "string"
+				},
+				"onPremisesSecurityIdentifier": {
+					"type": "string"
+				},
+				"onPremisesSyncEnabled": {
+					"type": "boolean"
+				},
+				"proxyAddresses": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},			
+				"securityEnabled": {
+					"type": "boolean"
+				},
+				"visibility": {
+					"type": "string"
+				},
+				"allowExternalSenders": {
+					"type": "boolean"
+				},
+				"autoSubscribeNewMembers": {
+					"type": "boolean"
+				},
+				"isSubscribedByMail": {
+					"type": "boolean"
+				},
+				"unseenCount": {
+					"type": "integer"
+				},
+				"renewedDateTime": {
+					"type": "string"
+				}
+			}
+		},
+		"GraphGroupArray": {
+			"type": "object",
+			"properties": {
+				"value": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/GraphGroup"
+					}
+				}
+			}
+		},
+        "GraphDriveItem": {
+            "type": "object",
+            "properties" : {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "createdDateTime": {
+                    "type": "string"
+                },                
+                "cTag": {
+                    "type": "string"
+                },                
+                "description": {
+                    "type": "string"
+                },                
+                "lastModifiedDateTime": {
+                    "type": "string"
+                },                
+                "size": {
+                    "type": "integer"
+                },                
+                "webDavUrl": {
+                    "type": "string"
+                },                
+                "webUrl": {
+                    "type": "string"
+                },                
+                "DateTimeLastModified": {
+                    "type": "string"
+                },       
+                "DateTimeCreated": {
+                    "type": "string"
+                }                
+            }
+        },
+		"GraphDriveItemArray": {
+			"type": "object",
+			"properties": {
+				"value": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/GraphDriveItem"
+					}
+				}
+			}
+		},
+        "GraphPerson": {
+            "type": "object",
+            "properties" : {
+                "id": {
+                    "type": "string"
+                },
+                "displayName": {
+                    "type": "string"
+                },
+                "givenName": {
+                    "type": "string"
+                },
+                "surname": {
+                    "type": "string"
+                },
+                "birthday": {
+                    "type": "string"
+                },
+                "personNotes": {
+                    "type": "string"
+                },
+                "isFavorite": {
+                    "type": "boolean"
+                },
+                "emailAddress": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "companyName": {
+                    "type": "string"
+                },
+                "yomiCompany": {
+                    "type": "string"
+                },
+                "department": {
+                    "type": "string"
+                },
+                "officeLocation": {
+                    "type": "string"
+                },
+                "profession": {
+                    "type": "string"
+                },
+                "mailboxType": {
+                    "type": "string"
+                },
+                "personType": {
+                    "type": "string"
+                }
+            }
+        },
+		"GraphPersonArray": {
+			"type": "object",
+			"properties": {
+				"value": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/GraphPerson"
+					}
+				}
+			}
+		},
+        "GraphError": {
+            "type": "object",
+            "properties" : {
+                "code": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "innerError": {
+                    "$ref": "#/definitions/GraphInnerError"
+                }                
+            }
+        },
+        "GraphInnerError": {
+            "type": "object",
+            "properties": {
+                "request-id": {
+                    "type": "string"
+                },
+                "date": {
+                    "type": "string"
+                }                        
+            }
+        }        		
+	}
+}

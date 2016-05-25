@@ -1,0 +1,75 @@
+{
+	"swagger": "2.0",
+	"host": "api.uber.com",
+	"basePath": "/v1/estimates",
+	"schemes": ["https"],
+	"paths": {
+		"/price": {
+			"get": {
+				"parameters": [{
+					"name": "server_token",
+					"in": "query",
+					"type": "string"
+				},
+				{
+					"name": "start_latitude",
+					"in": "query",
+					"type": "string"
+				},
+				{
+					"name": "start_longitude",
+					"in": "query",
+					"type": "string"
+				},
+				{
+					"name": "end_latitude",
+					"in": "query",
+					"type": "string"
+				},
+				{
+					"name": "end_longitude",
+					"in": "query",
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "Successful response",
+						"schema" : {
+                "$ref" : "#/definitions/PricesList"
+            }
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"PricesList":{
+		"properties": {
+			"prices": {
+				"type": "array",
+				"items": {
+					"$ref": "#/definitions/PriceDetails"
+				}
+			}
+		}
+		},
+		"PriceDetails":
+		{
+			"type":"object",
+			"properties":
+			{
+				"localized_display_name": {"type":"string"},
+				"high_estimate": {"type":"string"},
+				"minimum": {"type":"string"},
+				"duration": {"type":"string"},
+				"estimate": {"type":"string"},
+				"distance": {"type":"string"},
+				"display_name": {"type":"string"},
+				"product_id": {"type":"string"},
+				"low_estimate": {"type":"string"},
+				"surge_multiplier":{"type":"string"},
+				"currency_code": {"type":"string"},
+			}
+		}
+	}
+}

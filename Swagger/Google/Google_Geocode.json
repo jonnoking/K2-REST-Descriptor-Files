@@ -1,0 +1,127 @@
+{
+    "swagger": "2.0",
+    "host": "maps.googleapis.com",
+    "basePath": "/maps/api/geocode",
+    "schemes": [ "https" ],
+    "paths": {
+        "/json": {
+            "get": {
+                "parameters": [
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "key",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "$ref": "#/definitions/Result"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Result": {
+            "properties": {
+                "Results": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/QResults"
+                    }
+                },
+								"status": {"type": "string"}
+                
+            }
+						
+        },
+				"QResults":
+				{
+					"properties": {
+                "Results": [{
+                    "type": "object",
+                    "items": {
+                        "$ref": "#/definitions/AddressComponents"
+                    }
+                }],
+								"formatted_address": {"type": "string"},
+                "Geometry": [{
+                    "type": "object",
+                    "items": {
+                        "$ref": "#/definitions/GeometryDetails"
+                    }
+                }],
+                
+            }
+				},
+        "AddressComponents": [{
+            "properties": {
+                "long_name": {
+                    "type": "string"
+                },
+                "short_name": {
+                    "type": "string"
+                },
+                "types": [
+                    {
+                        "type": "string"
+                    }
+                ]
+            }
+        }],
+        "GeometryDetails": {
+            "type": "object",
+            "properties": {
+                "bounds": [{
+                    "properties": {
+                        "northeast": {
+                            "items": {
+                                "$ref": "#/definitions/LocationLatLong"
+                            }
+                        },
+												"southwest": {
+                            "items": {
+                                "$ref": "#/definitions/LocationLatLong"
+                            }
+                        }
+                    }
+                }],
+                "location": [{
+                            "items": {
+                                "$ref": "#/definitions/LocationLatLong"
+                            }
+                        }],
+                "location_type": {"type": "string"},
+                "viewport": [{
+                    "northeast": {
+                        "items": {
+                                "$ref": "#/definitions/LocationLatLong"
+                            }
+                    },
+                    "southwest": {
+                        "items": {
+                                "$ref": "#/definitions/LocationLatLong"
+                            }
+                    }
+                }],
+                "place_id": {"type": "string"},
+                "types": {"type": "string"}
+            }
+        },
+        "LocationLatLong": {
+            "properties": {
+                "lat": { "type": "string" },
+                "lng": { "type": "string" }
+            }
+        }
+        }
+    }
+
